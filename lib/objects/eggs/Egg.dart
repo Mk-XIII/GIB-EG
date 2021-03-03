@@ -3,7 +3,7 @@
 abstract class Egg {
   int durability;//how much clicks an egg must withstand before breaking
   int clicksToBreak;//clicks before breaking
-  String type;//egg sprite name
+  String sprite;//egg sprite name
 
   //returns false when egg breaks
   bool sustainedClick() {
