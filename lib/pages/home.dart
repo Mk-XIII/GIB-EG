@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/objects/eggs/BasicEgg.dart';
+import 'package:GIB_EG/objects/eggs/BasicEgg.dart';
 
 class Home extends StatefulWidget {
   @override

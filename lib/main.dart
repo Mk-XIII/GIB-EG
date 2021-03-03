@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/home.dart';
-import 'package:flutter_application_1/pages/inventory.dart';
-import 'package:flutter_application_1/pages/loading.dart';
-import 'package:flutter_application_1/pages/profile.dart';
+import 'package:GIB_EG/pages/home.dart';
+import 'package:GIB_EG/pages/inventory.dart';
+import 'package:GIB_EG/pages/loading.dart';
+import 'package:GIB_EG/pages/profile.dart';
 //TODO: change package name into real one
 
 void main() =>  runApp(MaterialApp(
