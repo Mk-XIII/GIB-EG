@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:GIB_EG/objects/eggs/BasicEgg.dart';
+import 'package:GIB_EG/objects/eggs/Egg.dart';
+import 'package:GIB_EG/objects/eggs/FancyEgg.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -7,36 +9,68 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  BasicEgg currentEgg = BasicEgg();//for testing purpose later should be modified
+  //BasicEgg currentEgg = BasicEgg();//for testing purpose later should be modified
+  
+  int _currentIndex = 0;
+  List<Egg> _eggs = [
+    BasicEgg(),
+    FancyEgg(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                currentEgg.clicksToBreak.toString(),
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              //TODO: make clickable area to represent an egg
-              GestureDetector(
-                onTap: () {
-                  currentEgg.sustainedClick();//TODO: add logic
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                icon: Icon(Icons.keyboard_arrow_left_rounded),
+                iconSize: 50.0,
+                onPressed: () {
+                  _currentIndex = 0;
                   setState(() {});
                 },
-                child: Image.asset(
-                  'assets/sprites/egg.png',//should be changed depending on egg
-                  width: 200.0,//should be changed depending on egg
-                  height: 200.0,//should be changed depending on egg
-                ),
-              )
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    _eggs[_currentIndex].clicksToBreak.toString(),
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50.0,
+                  ),
+                  //TODO: make clickable area to represent an egg
+                  GestureDetector(
+                    onTap: () {
+                       _eggs[_currentIndex].sustainedClick();//TODO: add logic
+                      setState(() {});
+                    },
+                    
+                    child: Image.asset(
+                      _eggs[_currentIndex].sprite,//should be changed depending on egg
+                      width: 250.0,//should be changed depending on egg
+                      height: 250.0,//should be changed depending on egg
+                    ),
+                  )
+                ],
+              ),
+              IconButton(
+                icon: Icon(Icons.keyboard_arrow_right_rounded),
+                iconSize: 50.0,
+                onPressed: () {
+                  _currentIndex = 1;
+                  setState(() {});
+                  print(_eggs[_currentIndex].sprite);
+                },
+              ),
             ],
           ),
         ),
