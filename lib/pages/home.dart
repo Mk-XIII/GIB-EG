@@ -81,6 +81,7 @@ class _HomeState extends State<Home> {
       //TODO: change navigation bar style
       bottomNavigationBar: BottomNavigationBar(
         selectedItemColor: Colors.black,
+        backgroundColor: Colors.cyan[400],
         type: BottomNavigationBarType.fixed,
         items: [
           BottomNavigationBarItem(
