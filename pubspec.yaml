@@ -45,8 +45,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/sprites/egg.png
-    - assets/sprites/fancy_egg.png
+    - assets/icons/
+    - assets/sprites/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
