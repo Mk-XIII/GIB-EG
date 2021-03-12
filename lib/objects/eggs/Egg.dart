@@ -3,7 +3,18 @@
 abstract class Egg {
   int durability;//how much clicks an egg must withstand before breaking
   int clicksToBreak;//clicks before breaking
+  int minCurrencyGain;
+  int maxCurrencyGain;
   String sprite;//egg sprite name
+
+  Egg(int durability, int clicksToBreak, int minCurrencyGain, int maxCurrencyGain, String sprite)
+  {
+    this.durability = durability;
+    this.clicksToBreak = clicksToBreak;
+    this.minCurrencyGain = minCurrencyGain;
+    this.maxCurrencyGain = maxCurrencyGain;
+    this.sprite = sprite;
+  }
 
   //returns false when egg breaks
   bool sustainedClick() {

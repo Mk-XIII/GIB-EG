@@ -11,21 +11,22 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   var _controller = PageController(initialPage: 0);
+  Map data = {};
 
   @override
   Widget build(BuildContext context) {
+    data = ModalRoute.of(context).settings.arguments;//might need to update only once
+
     return Scaffold(
-      body: SafeArea(
-        child: PageView(
-          physics: NeverScrollableScrollPhysics(),
-          controller: _controller,
-          children: [
-            TappableEgg(),
-            Inventory(),
-            Profile(),//placeholder
-            Profile(),
-          ],
-          ),
+      body: PageView(
+        physics: NeverScrollableScrollPhysics(),
+        controller: _controller,
+        children: [
+          TappableEgg(currencyImage: data['currencyImage']),
+          Inventory(),
+          Profile(),//placeholder
+          Profile(),
+        ],
         ),
 
       //TODO: change navigation bar style
@@ -38,8 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
           //TODO: decide on transition style
           children: <Widget>[
             IconButton(
-              iconSize: 60,
-              icon: Image.asset("assets/icons/template1.png"),
+              iconSize: 65,
+              icon: Image.asset("assets/icons/egg.png"),
                onPressed: () {
                  _controller.animateToPage(
                    0,
@@ -49,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                },
             ),
             IconButton(
-              iconSize: 60,
+              iconSize: 65,
               icon: Image.asset("assets/icons/template1.png"),
               onPressed: () {
                 _controller.animateToPage(
@@ -60,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             IconButton(
-              iconSize: 60,
+              iconSize: 65,
               icon: Image.asset("assets/icons/template1.png"),
               onPressed: () {
                 _controller.animateToPage(
@@ -71,11 +72,22 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
             IconButton(
-              iconSize: 60,
-              icon: Image.asset("assets/icons/profile.png"),
+              iconSize: 65,
+              icon: Image.asset("assets/icons/template1.png"),
               onPressed: () {
                 _controller.animateToPage(
                    3,
+                   duration: Duration(milliseconds: 750),
+                   curve: Curves.decelerate,             
+                   );
+              },
+            ),
+            IconButton(
+              iconSize: 65,
+              icon: Image.asset("assets/icons/profile.png"),
+              onPressed: () {
+                _controller.animateToPage(
+                   4,
                    duration: Duration(milliseconds: 750),
                    curve: Curves.decelerate,             
                    );

@@ -1,5 +1,9 @@
-import 'package:flutter/material.dart';
+import 'dart:async';
+import 'dart:typed_data';
+import 'dart:ui' as UI;
 
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 class Loading extends StatefulWidget {
   @override
   _LoadingState createState() => _LoadingState();
@@ -13,9 +17,19 @@ class _LoadingState extends State<Loading> {
   }
 
   void changePage(String route) async {
-    //displays loading screen for 2 seconds, for testing purpose
-    await Future.delayed(const Duration(seconds: 2), (){});
-    Navigator.pushReplacementNamed(context, route);
+    UI.Image image = await loadUiImage('assets/icons/currencySmall.png');
+    Navigator.pushReplacementNamed(context, route, arguments: {
+      'currencyImage': image,
+    });
+  }
+
+  Future<UI.Image> loadUiImage(String imageAssetPath) async {
+    final ByteData data = await rootBundle.load(imageAssetPath);
+    final Completer<UI.Image> completer = Completer();
+    UI.decodeImageFromList(Uint8List.view(data.buffer), (UI.Image img) {
+      return completer.complete(img);
+    });
+    return completer.future;
   }
 
   @override

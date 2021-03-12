@@ -1,9 +1,16 @@
-import 'package:flutter/material.dart';
+import 'package:GIB_EG/utilities/interactiveEggButton.dart';
 import 'package:GIB_EG/objects/eggs/BasicEgg.dart';
 import 'package:GIB_EG/objects/eggs/Egg.dart';
 import 'package:GIB_EG/objects/eggs/FancyEgg.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter/material.dart';
+import 'dart:ui' as UI;
 
 class TappableEgg extends StatefulWidget {
+  final UI.Image currencyImage;
+
+  const TappableEgg({@required this.currencyImage});
+
   @override
   _TappableEggState createState() => _TappableEggState();
 }
@@ -17,56 +24,43 @@ class _TappableEggState extends State<TappableEgg> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return Scaffold(
       body: Center(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
           children: [
-            IconButton(
-              icon: Icon(Icons.keyboard_arrow_left_rounded),
-              iconSize: 50.0,
-              onPressed: () {
-                _currentIndex = 0;
-                setState(() {});
-              },
+            Expanded(
+              flex: 1,
+              child: IconButton(
+                icon: Icon(Icons.keyboard_arrow_left_rounded),
+                iconSize: 50.0,
+                onPressed: () {
+                  _currentIndex = 0;
+                  setState(() {});
+                },
+              ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  _eggs[_currentIndex].clicksToBreak.toString(),
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                  ),
+            Expanded(
+              flex: 2,
+              child: InteractiveEggButton(
+                  egg: _eggs[_currentIndex],
+                  onPressed: () {},
+                  currenceImage: widget.currencyImage,
                 ),
-                SizedBox(
-                  height: 50.0,
-                ),
-                //TODO: make clickable area to represent an egg
-                GestureDetector(
-                  onTap: () {
-                     _eggs[_currentIndex].sustainedClick();//TODO: add logic
-                    setState(() {});
-                  },
-                  
-                  child: Image.asset(
-                    _eggs[_currentIndex].sprite,//should be changed depending on egg
-                    width: 250.0,//should be changed depending on egg
-                    height: 250.0,//should be changed depending on egg
-                  ),
-                )
-              ],
-            ),
-            IconButton(
-              icon: Icon(Icons.keyboard_arrow_right_rounded),
-              iconSize: 50.0,
-              onPressed: () {
-                _currentIndex = 1;
-                setState(() {});
-                print(_eggs[_currentIndex].sprite);
-              },
+              ),
+            Expanded(
+              flex: 1,
+              child: IconButton(
+                icon: Icon(Icons.keyboard_arrow_right_rounded),
+                iconSize: 50.0,
+                onPressed: () {
+                  _currentIndex = 1;
+                  setState(() {});
+                  print(_eggs[_currentIndex].sprite);
+                },
+              ),
             ),
           ],
         ),

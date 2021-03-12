@@ -1,9 +1,5 @@
 import 'Egg.dart';
 
 class BasicEgg extends Egg {
-  BasicEgg() {
-    durability = 5;
-    clicksToBreak = durability;//might do random int generation from 1 to durability for more attracting gameplay
-    sprite = 'assets/sprites/egg.png';
-  }
+  BasicEgg() : super(5, 5, 1, 3, 'assets/sprites/egg.png');
 }
