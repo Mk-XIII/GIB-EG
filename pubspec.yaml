@@ -23,7 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  transparent_image_button: 0.1.1+1
+  image_pixels: ^2.0.0
 
 
   # The following adds the Cupertino Icons font to your application.

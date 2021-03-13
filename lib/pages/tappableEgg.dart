@@ -8,19 +8,31 @@ import 'dart:ui' as UI;
 
 class TappableEgg extends StatefulWidget {
   final UI.Image currencyImage;
+  final UI.Image basicEggImage;
+  final UI.Image fancyEggImage;
 
-  const TappableEgg({@required this.currencyImage});
+  const TappableEgg(
+      {@required this.currencyImage,
+      @required this.basicEggImage,
+      @required this.fancyEggImage});
 
   @override
   _TappableEggState createState() => _TappableEggState();
 }
 
-class _TappableEggState extends State<TappableEgg> { 
+class _TappableEggState extends State<TappableEgg> {
   int _currentIndex = 0;
-  List<Egg> _eggs = [
-    BasicEgg(),
-    FancyEgg(),
-  ];
+  List<Egg> _eggs;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _eggs = [
+      BasicEgg(widget.basicEggImage),
+      FancyEgg(widget.fancyEggImage),
+    ];
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +40,10 @@ class _TappableEggState extends State<TappableEgg> {
     return Scaffold(
       body: Center(
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center, //Center Row contents horizontally,
-          crossAxisAlignment: CrossAxisAlignment.center, //Center Row contents vertically,
+          mainAxisAlignment:
+              MainAxisAlignment.center, //Center Row contents horizontally,
+          crossAxisAlignment:
+              CrossAxisAlignment.center, //Center Row contents vertically,
           children: [
             Expanded(
               flex: 1,
@@ -43,13 +57,13 @@ class _TappableEggState extends State<TappableEgg> {
               ),
             ),
             Expanded(
-              flex: 2,
+              flex: 4,
               child: InteractiveEggButton(
-                  egg: _eggs[_currentIndex],
-                  onPressed: () {},
-                  currencyImage: widget.currencyImage,
-                ),
+                egg: _eggs[_currentIndex],
+                onPressed: () {},
+                currencyImage: widget.currencyImage,
               ),
+            ),
             Expanded(
               flex: 1,
               child: IconButton(

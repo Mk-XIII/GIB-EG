@@ -1,5 +1,6 @@
 import 'Egg.dart';
+import 'dart:ui' as UI;
 
 class BasicEgg extends Egg {
-  BasicEgg() : super(5, 5, 1, 3, 'assets/sprites/egg.png');
+  BasicEgg(UI.Image image) : super(5, 5, 1, 3, 'assets/sprites/egg.png', image);
 }

@@ -4,6 +4,7 @@ import 'dart:ui' as UI;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 class Loading extends StatefulWidget {
   @override
   _LoadingState createState() => _LoadingState();
@@ -17,9 +18,14 @@ class _LoadingState extends State<Loading> {
   }
 
   void changePage(String route) async {
-    UI.Image image = await loadUiImage('assets/icons/currencySmall.png');
+    UI.Image currencyImage = await loadUiImage('assets/icons/currencySmall.png');
+    UI.Image basicEggImage = await loadUiImage('assets/sprites/egg.png');
+    UI.Image fancyEggImage = await loadUiImage('assets/sprites/fancy_egg.png');
+
     Navigator.pushReplacementNamed(context, route, arguments: {
-      'currencyImage': image,
+      'currencyImage': currencyImage,
+      'basicEggImage': basicEggImage,
+      'fancyEggImage': fancyEggImage,
     });
   }
 

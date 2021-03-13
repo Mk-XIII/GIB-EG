@@ -77,7 +77,7 @@ class MovingParticle extends Particle with Moving, NestedParticle {
 
 mixin Fading on Updatable {
   FadingDirection direction = FadingDirection.fadeOut;
-  double opacity ;
+  double opacity;
 
   @override
   void update(Animation controller) {
@@ -104,7 +104,7 @@ mixin CompositeParticle on Particle {
   @override
   void update(Animation controller) {
     super.update(controller);
-    
+
     for (var child in children) {
       child.update(controller);
     }
@@ -124,7 +124,7 @@ class Randoms {
 }
 
 mixin Scaling on Updatable {
-  double from = 0; 
+  double from = 0;
   double to = 1;
   double current;
 
@@ -156,7 +156,7 @@ class ScalingParticle extends Particle with Scaling, NestedParticle {
   Particle child;
 
   ScalingParticle({
-    this.from = 0.0, 
+    this.from = 0.0,
     this.to = 1.0,
     @required this.child,
   });
@@ -205,7 +205,7 @@ class Circle extends Particle {
   });
 
   @override
-  void draw(Canvas canvas, Size size)  {
+  void draw(Canvas canvas, Size size) {
     canvas.save();
     canvas.drawCircle(offset, 30.0, Paint()..color = Colors.white);
     canvas.restore();
@@ -222,10 +222,11 @@ class FadingImage extends Particle with Fading {
   });
 
   @override
-  void draw(Canvas canvas, Size size)  {
+  void draw(Canvas canvas, Size size) {
     canvas.save();
     canvas.translate(-20, -20);
-    canvas.drawImage(image, offset, Paint()..color = Colors.transparent.withOpacity(opacity));
+    canvas.drawImage(image, offset,
+        Paint()..color = Colors.transparent.withOpacity(opacity));
     canvas.restore();
   }
 }
@@ -247,7 +248,7 @@ class ParticlePainter extends CustomPainter {
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
 
-enum FadingDirection {fadeIn, fadeOut}
+enum FadingDirection { fadeIn, fadeOut }
 
 typedef ParticlesWidgetBuilder = Widget Function(
   BuildContext context,
@@ -277,8 +278,9 @@ class Particles extends StatefulWidget {
     @required this.particle,
     @required this.builder,
     @required this.duration,
-    this.curve = Curves.easeOutQuint ,});
-  
+    this.curve = Curves.easeOutQuint,
+  });
+
   @override
   _ParticlesState createState() => _ParticlesState();
 }
@@ -287,7 +289,7 @@ class _ParticlesState extends State<Particles>
     with SingleTickerProviderStateMixin {
   AnimationController controller;
   Animation animation;
-  
+
   @override
   void initState() {
     super.initState();

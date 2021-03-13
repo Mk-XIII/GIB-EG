@@ -15,83 +15,99 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    data = ModalRoute.of(context).settings.arguments;//might need to update only once
+    data = ModalRoute.of(context)
+        .settings
+        .arguments; //might need to update only once
 
     return Scaffold(
       body: PageView(
         physics: NeverScrollableScrollPhysics(),
         controller: _controller,
         children: [
-          TappableEgg(currencyImage: data['currencyImage']),
+          TappableEgg(
+            currencyImage: data['currencyImage'],
+            basicEggImage: data['basicEggImage'],
+            fancyEggImage: data['fancyEggImage'],
+          ),
           Inventory(),
-          Profile(),//placeholder
+          Profile(), //placeholder
           Profile(),
         ],
-        ),
+      ),
 
       //TODO: change navigation bar style
       bottomNavigationBar: BottomAppBar(
         color: Colors.transparent,
-        elevation: 0,//gets rid of the shadow
+        elevation: 0, //gets rid of the shadow
         child: new Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           //TODO: decide on transition style
           children: <Widget>[
-            IconButton(
-              iconSize: 65,
-              icon: Image.asset("assets/icons/egg.png"),
-               onPressed: () {
-                 _controller.animateToPage(
-                   0,
-                   duration: Duration(milliseconds: 750),
-                   curve: Curves.decelerate,             
-                   );
-               },
+            Expanded(
+              child: IconButton(
+                iconSize: 65,
+                icon: Image.asset("assets/icons/egg.png"),
+                onPressed: () {
+                  _controller.animateToPage(
+                    0,
+                    duration: Duration(milliseconds: 750),
+                    curve: Curves.decelerate,
+                  );
+                },
+              ),
             ),
-            IconButton(
-              iconSize: 65,
-              icon: Image.asset("assets/icons/template1.png"),
-              onPressed: () {
-                _controller.animateToPage(
-                   1,
-                   duration: Duration(milliseconds: 750),
-                   curve: Curves.decelerate,             
-                   );
-              },
+            Expanded(
+              child: IconButton(
+                iconSize: 65,
+                icon: Image.asset("assets/icons/template1.png"),
+                onPressed: () {
+                  _controller.animateToPage(
+                    1,
+                    duration: Duration(milliseconds: 750),
+                    curve: Curves.decelerate,
+                  );
+                },
+              ),
             ),
-            IconButton(
-              iconSize: 65,
-              icon: Image.asset("assets/icons/template1.png"),
-              onPressed: () {
-                _controller.animateToPage(
-                   2,
-                   duration: Duration(milliseconds: 750),
-                   curve: Curves.decelerate,             
-                   );
-              },
+            Expanded(
+              child: IconButton(
+                iconSize: 65,
+                icon: Image.asset("assets/icons/template1.png"),
+                onPressed: () {
+                  _controller.animateToPage(
+                    2,
+                    duration: Duration(milliseconds: 750),
+                    curve: Curves.decelerate,
+                  );
+                },
+              ),
             ),
-            IconButton(
-              iconSize: 65,
-              icon: Image.asset("assets/icons/template1.png"),
-              onPressed: () {
-                _controller.animateToPage(
-                   3,
-                   duration: Duration(milliseconds: 750),
-                   curve: Curves.decelerate,             
-                   );
-              },
+            Expanded(
+              child: IconButton(
+                iconSize: 65,
+                icon: Image.asset("assets/icons/template1.png"),
+                onPressed: () {
+                  _controller.animateToPage(
+                    3,
+                    duration: Duration(milliseconds: 750),
+                    curve: Curves.decelerate,
+                  );
+                },
+              ),
             ),
-            IconButton(
-              iconSize: 65,
-              icon: Image.asset("assets/icons/profile.png"),
-              onPressed: () {
-                _controller.animateToPage(
-                   4,
-                   duration: Duration(milliseconds: 750),
-                   curve: Curves.decelerate,             
-                   );
-              },
+            Expanded(
+              child: IconButton(
+                iconSize: 65,
+                icon: Image.asset("assets/icons/profile.png"),
+                onPressed: () {
+                  _controller.animateToPage(
+                    4,
+                    duration: Duration(milliseconds: 750),
+                    curve: Curves.decelerate,
+                  );
+                },
+              ),
             ),
           ],
         ),
