@@ -197,21 +197,32 @@ class Burst extends Particle with CompositeParticle {
   }
 }
 
+class Circle extends Particle {
+  Offset offset;
+
+  Circle({
+    @required this.offset,
+  });
+
+  @override
+  void draw(Canvas canvas, Size size)  {
+    canvas.save();
+    canvas.drawCircle(offset, 30.0, Paint()..color = Colors.white);
+    canvas.restore();
+  }
+}
 
 class FadingImage extends Particle with Fading {
-  Size size;
   UI.Image image;
   Offset offset;
 
   FadingImage({
-    this.size = const Size(20, 20),
     @required this.offset,
     @required this.image,
   });
 
   @override
   void draw(Canvas canvas, Size size)  {
-    print(offset);
     canvas.save();
     canvas.translate(-20, -20);
     canvas.drawImage(image, offset, Paint()..color = Colors.transparent.withOpacity(opacity));
@@ -265,7 +276,7 @@ class Particles extends StatefulWidget {
   Particles({
     @required this.particle,
     @required this.builder,
-    this.duration = const Duration(milliseconds: 500),
+    @required this.duration,
     this.curve = Curves.easeOutQuint ,});
   
   @override

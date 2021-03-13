@@ -47,7 +47,7 @@ class _TappableEggState extends State<TappableEgg> {
               child: InteractiveEggButton(
                   egg: _eggs[_currentIndex],
                   onPressed: () {},
-                  currenceImage: widget.currencyImage,
+                  currencyImage: widget.currencyImage,
                 ),
               ),
             Expanded(
