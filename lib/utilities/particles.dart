@@ -1,4 +1,4 @@
-import 'dart:math';
+import 'dart:math' as math;
 import 'dart:ui' as UI;
 
 import 'package:flutter/material.dart';
@@ -112,12 +112,23 @@ mixin CompositeParticle on Particle {
 }
 
 class Randoms {
-  static final rnd = Random();
+  static final rnd = math.Random();
 
-  static Offset offsetFromSize(Size size) {
+  static Offset offsetFromSizetoCircle(Size size) {
+    double r = size.height / 2 * math.sqrt(Randoms.rnd.nextDouble());
+    double theta = Randoms.rnd.nextDouble() * 2 * math.pi;
+
+
     return Offset(
-      (rnd.nextDouble() * size.width) - (size.width / 2),
-      (rnd.nextDouble() * size.height) - (size.height / 2),
+      r * math.cos(theta),
+      r * math.sin(theta),
+    );
+  }
+
+  static Offset offsetFromSizetoSky(Size size) {
+    return Offset(
+      Randoms.rnd.nextDouble() * size.width / 2 - size.width,
+      Randoms.rnd.nextDouble() * size.height / 2,
     );
   }
 }
@@ -149,8 +160,26 @@ mixin NestedParticle on Particle {
   }
 }
 
-class RarityParticles extends Particle with Scaling, NestedParticle {
-  //.50 .762625 .887625 .950125 .981345 .996.970 basic destribution
+class RarityParticles extends Particle with CompositeParticle {
+    List<Particle> children;
+
+    RarityParticles({
+      @required List<Particle> children,
+      Size size = const Size(400, 400),
+    }) {
+      this.children = children
+          .map<Particle>(
+            (particle) => CurvedParticle(
+              curve: Curves.easeOutQuad,
+              child: MovingParticle(
+                from: Offset.zero,
+                to: Randoms.offsetFromSizetoCircle(size),
+                child: particle,
+              ),
+            ),
+          )
+          .toList();
+    }
 }
 
 class ColoredCircle extends Particle with Fading {
@@ -161,14 +190,14 @@ class ColoredCircle extends Particle with Fading {
   ColoredCircle({
     @required this.offset,
     @required this.radius,
-    this.color = Colors.tealAccent,
+    @required this.color,
   });
 
   @override
   void draw(Canvas canvas, Size size) {
     canvas.save();
     canvas.drawCircle(offset, radius,
-        Paint()..color = Colors.transparent.withOpacity(opacity));
+        Paint()..color = color.withOpacity(opacity));
     canvas.restore();
   }
 }
@@ -180,7 +209,7 @@ class ScalingParticle extends Particle with Scaling, NestedParticle {
 
   ScalingParticle({
     this.from = 1.0,
-    this.to = 2.0,
+    this.to = 1,
     @required this.child,
   });
 
@@ -193,27 +222,6 @@ class ScalingParticle extends Particle with Scaling, NestedParticle {
   }
 }
 
-class Burst extends Particle with CompositeParticle {
-  List<Particle> children;
-
-  Burst({
-    @required List<Particle> children,
-    Size size = const Size(1500, 1500),
-  }) {
-    this.children = children
-        .map<Particle>(
-          (particle) => CurvedParticle(
-            curve: Curves.easeOutCubic,
-            child: MovingParticle(
-              from: Offset.zero,
-              to: Randoms.offsetFromSize(size),
-              child: particle,
-            ),
-          ),
-        )
-        .toList();
-  }
-}
 
 class FadingImage extends Particle with Fading {
   UI.Image image;

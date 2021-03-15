@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:GIB_EG/objects/eggs/Egg.dart';
 import 'package:GIB_EG/utilities/particles.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +20,6 @@ class InteractiveEggButton extends StatefulWidget {
 
 class _InteractiveEggButtonState extends State<InteractiveEggButton> {
   List<Particles> particles = [];
-  Random _random = Random();
   
   @override
   Widget build(BuildContext context) {
@@ -40,6 +37,7 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
                   Offset particlesOffset = _getOffset(details);
 
                   if (_onEgg(img, (context.size.height - widget.egg.height) / 2, (context.size.width - widget.egg.width) / 2, particlesOffset.dx.toInt(), particlesOffset.dy.toInt())) {
+                    /*
                     particles.add(Particles(
                       key: UniqueKey(),
                       builder: (context, controller) {
@@ -51,20 +49,27 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
                         image: widget.currencyImage,
                       ),
                       duration: Duration(milliseconds: 300),
-                    ));
-                  } else {
-                    particles.add(Particles(
+                    ));*/
+                    if(!widget.egg.sustainedClick()) {
+                      Color colorado = widget.egg.dropItem();//change to item later on
+
+                      particles.add(Particles(
                         key: UniqueKey(),
                         builder: (context, controller) {
                           controller.forward();
                           return Container();
                         },
-                        particle: Burst(
-                          children: List<Particle>.generate(100, (_) => ColoredCircle(offset: particlesOffset, radius: Randoms.rnd.nextInt(25).toDouble()))
+                        particle: RarityParticles(
+                          children: List<Particle>.generate(125, (count) => 
+                            ColoredCircle(
+                              color: colorado,
+                              offset: particlesOffset,
+                              radius: Randoms.rnd.nextInt(25).toDouble()))
                           ),
-                          duration: Duration(seconds: 3),
+                          duration: Duration(milliseconds: 900),
                         ),
-                    );
+                      );
+                    }
                   }
 
                   setState(() {
@@ -81,6 +86,7 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
 
   Offset _getOffset(TapDownDetails details) {
     return details.localPosition;
+    
   }
 
   bool _onEgg(ImgDetails img, double halfOfHeightEmptyness,  double halfOfWidthEmptyness, int dx, int dy) {
