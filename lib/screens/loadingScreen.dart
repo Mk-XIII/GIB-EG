@@ -19,13 +19,9 @@ class _LoadingState extends State<Loading> {
 
   void changePage(String route) async {
     UI.Image currencyImage = await loadUiImage('assets/icons/currencySmall.png');
-    UI.Image basicEggImage = await loadUiImage('assets/sprites/egg.png');
-    UI.Image fancyEggImage = await loadUiImage('assets/sprites/fancy_egg.png');
 
     Navigator.pushReplacementNamed(context, route, arguments: {
       'currencyImage': currencyImage,
-      'basicEggImage': basicEggImage,
-      'fancyEggImage': fancyEggImage,
     });
   }
 

@@ -8,13 +8,9 @@ import 'dart:ui' as UI;
 
 class TappableEgg extends StatefulWidget {
   final UI.Image currencyImage;
-  final UI.Image basicEggImage;
-  final UI.Image fancyEggImage;
 
   const TappableEgg(
-      {@required this.currencyImage,
-      @required this.basicEggImage,
-      @required this.fancyEggImage});
+      {@required this.currencyImage,});
 
   @override
   _TappableEggState createState() => _TappableEggState();
@@ -28,8 +24,8 @@ class _TappableEggState extends State<TappableEgg> {
   void initState() {
     // TODO: implement initState
     _eggs = [
-      BasicEgg(widget.basicEggImage),
-      FancyEgg(widget.fancyEggImage),
+      BasicEgg(),
+      FancyEgg(),
     ];
     super.initState();
   }

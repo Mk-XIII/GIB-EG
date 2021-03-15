@@ -114,7 +114,6 @@ mixin CompositeParticle on Particle {
 class Randoms {
   static final rnd = Random();
 
-  /// Returns a random [Offset] from the "center" point of given size
   static Offset offsetFromSize(Size size) {
     return Offset(
       (rnd.nextDouble() * size.width) - (size.width / 2),
@@ -150,14 +149,38 @@ mixin NestedParticle on Particle {
   }
 }
 
+class RarityParticles extends Particle with Scaling, NestedParticle {
+  //.50 .762625 .887625 .950125 .981345 .996.970 basic destribution
+}
+
+class ColoredCircle extends Particle with Fading {
+  Offset offset;
+  Color color;
+  double radius;
+
+  ColoredCircle({
+    @required this.offset,
+    @required this.radius,
+    this.color = Colors.tealAccent,
+  });
+
+  @override
+  void draw(Canvas canvas, Size size) {
+    canvas.save();
+    canvas.drawCircle(offset, radius,
+        Paint()..color = Colors.transparent.withOpacity(opacity));
+    canvas.restore();
+  }
+}
+
 class ScalingParticle extends Particle with Scaling, NestedParticle {
   double from;
   double to;
   Particle child;
 
   ScalingParticle({
-    this.from = 0.0,
-    this.to = 1.0,
+    this.from = 1.0,
+    this.to = 2.0,
     @required this.child,
   });
 
@@ -175,17 +198,12 @@ class Burst extends Particle with CompositeParticle {
 
   Burst({
     @required List<Particle> children,
-    Size size = const Size(100, 100),
+    Size size = const Size(1500, 1500),
   }) {
     this.children = children
         .map<Particle>(
           (particle) => CurvedParticle(
-            curve: Interval(
-              // Interval would start at random point from 0 to 0.5
-              // and finish at random point between 0.6 and 1.0
-              Randoms.rnd.nextDouble() * .5,
-              Randoms.rnd.nextDouble() * .4 + .6,
-            ),
+            curve: Curves.easeOutCubic,
             child: MovingParticle(
               from: Offset.zero,
               to: Randoms.offsetFromSize(size),
@@ -194,21 +212,6 @@ class Burst extends Particle with CompositeParticle {
           ),
         )
         .toList();
-  }
-}
-
-class Circle extends Particle {
-  Offset offset;
-
-  Circle({
-    @required this.offset,
-  });
-
-  @override
-  void draw(Canvas canvas, Size size) {
-    canvas.save();
-    canvas.drawCircle(offset, 30.0, Paint()..color = Colors.white);
-    canvas.restore();
   }
 }
 
@@ -275,11 +278,12 @@ class Particles extends StatefulWidget {
   final Curve curve;
 
   Particles({
+    @required Key key,
     @required this.particle,
     @required this.builder,
     @required this.duration,
     this.curve = Curves.easeOutQuint,
-  });
+  }) : super(key: key);
 
   @override
   _ParticlesState createState() => _ParticlesState();
