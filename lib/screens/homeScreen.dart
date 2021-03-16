@@ -26,6 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           TappableEgg(
             currencyImage: data['currencyImage'],
+            numbers: data['numbers'],
           ),
           Inventory(),
           Profile(), //placeholder

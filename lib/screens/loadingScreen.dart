@@ -17,11 +17,18 @@ class _LoadingState extends State<Loading> {
     changePage('/homeScreen');
   }
 
+  //probably possible to optimize with parallelization
   void changePage(String route) async {
     UI.Image currencyImage = await loadUiImage('assets/icons/currencySmall.png');
 
+    List<UI.Image> numbers = [];
+    for(int i = 0; i < 10; ++i) {
+      numbers.add(await loadUiImage('assets/numbers/' + i.toString() + '.png'));
+    }
+
     Navigator.pushReplacementNamed(context, route, arguments: {
       'currencyImage': currencyImage,
+      'numbers' : numbers,
     });
   }
 

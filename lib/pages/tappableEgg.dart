@@ -8,9 +8,12 @@ import 'dart:ui' as UI;
 
 class TappableEgg extends StatefulWidget {
   final UI.Image currencyImage;
+  final List<UI.Image> numbers;
 
   const TappableEgg(
-      {@required this.currencyImage,});
+      {@required this.currencyImage,
+      @required this.numbers
+  });
 
   @override
   _TappableEggState createState() => _TappableEggState();
@@ -58,6 +61,7 @@ class _TappableEggState extends State<TappableEgg> {
                 egg: _eggs[_currentIndex],
                 onPressed: () {},
                 currencyImage: widget.currencyImage,
+                numbers: widget.numbers,
               ),
             ),
             Expanded(

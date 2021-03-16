@@ -8,11 +8,13 @@ class InteractiveEggButton extends StatefulWidget {
   final Egg egg;
   final void Function() onPressed;
   final UI.Image currencyImage;
+  final List<UI.Image> numbers;
 
   InteractiveEggButton({
     @required this.egg,
     @required this.onPressed(),
-    @required this.currencyImage});
+    @required this.currencyImage,
+    @required this.numbers});
 
   @override
   _InteractiveEggButtonState createState() => _InteractiveEggButtonState();
@@ -37,19 +39,6 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
                   Offset particlesOffset = _getOffset(details);
 
                   if (_onEgg(img, (context.size.height - widget.egg.height) / 2, (context.size.width - widget.egg.width) / 2, particlesOffset.dx.toInt(), particlesOffset.dy.toInt())) {
-                    /*
-                    particles.add(Particles(
-                      key: UniqueKey(),
-                      builder: (context, controller) {
-                        controller.forward();
-                        return Container();
-                      },
-                      particle: FadingImage(
-                        offset: particlesOffset,
-                        image: widget.currencyImage,
-                      ),
-                      duration: Duration(milliseconds: 300),
-                    ));*/
                     if(!widget.egg.sustainedClick()) {
                       Color colorado = widget.egg.dropItem();//change to item later on
 
@@ -71,7 +60,7 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
                       );
                     }
                   }
-
+                  
                   setState(() {
                     while(particles.length > 20) {
                       particles.removeAt(0);
@@ -84,10 +73,7 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
     );
   }
 
-  Offset _getOffset(TapDownDetails details) {
-    return details.localPosition;
-    
-  }
+  Offset _getOffset(TapDownDetails details) => details.localPosition;
 
   bool _onEgg(ImgDetails img, double halfOfHeightEmptyness,  double halfOfWidthEmptyness, int dx, int dy) {
     return halfOfHeightEmptyness < dy &&

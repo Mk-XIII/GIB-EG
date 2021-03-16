@@ -125,10 +125,10 @@ class Randoms {
     );
   }
 
-  static Offset offsetFromSizetoSky(Size size) {
+  static Offset wombly() {
     return Offset(
-      Randoms.rnd.nextDouble() * size.width / 2 - size.width,
-      Randoms.rnd.nextDouble() * size.height / 2,
+      0.0,
+      Randoms.rnd.nextDouble() * 2,
     );
   }
 }
@@ -208,7 +208,7 @@ class ScalingParticle extends Particle with Scaling, NestedParticle {
   Particle child;
 
   ScalingParticle({
-    this.from = 1.0,
+    this.from = 1,
     this.to = 1,
     @required this.child,
   });
@@ -235,7 +235,6 @@ class FadingImage extends Particle with Fading {
   @override
   void draw(Canvas canvas, Size size) {
     canvas.save();
-    canvas.translate(-20, -20);
     canvas.drawImage(image, offset,
         Paint()..color = Colors.transparent.withOpacity(opacity));
     canvas.restore();

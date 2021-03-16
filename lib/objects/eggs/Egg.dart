@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 abstract class Egg {
-  int durability;//how much clicks an egg must withstand before breaking
-  int clicksToBreak;//clicks before breaking
-  int minCurrencyGain;
-  int bonusCurrencyGain;
+  int _durability;//how much clicks an egg must withstand before breaking
+  int _clicksToBreak;//clicks before breaking
+  int _minCurrencyGain;
+  int _bonusCurrencyGain;
   String sprite;//egg sprite name
   double width;
   double height;
@@ -14,12 +14,12 @@ abstract class Egg {
   List<Color> _items;//change to Item class after implementation
 
 
-  Egg(int durability, int clicksToBreak, int minCurrencyGain, int bonusCurrencyGain, String sprite, double width, double height)
+  Egg(int _durability, int _clicksToBreak, int _minCurrencyGain, int _bonusCurrencyGain, String sprite, double width, double height)
   {
-    this.durability = durability;
-    this.clicksToBreak = clicksToBreak;
-    this.minCurrencyGain = minCurrencyGain;
-    this.bonusCurrencyGain = bonusCurrencyGain;
+    this._durability = _durability;
+    this._clicksToBreak = _clicksToBreak;
+    this._minCurrencyGain = _minCurrencyGain;
+    this._bonusCurrencyGain = _bonusCurrencyGain;
     this.sprite = sprite;
     this.width = width;
     this.height = height;
@@ -29,9 +29,9 @@ abstract class Egg {
 
   //returns false when egg breaks
   bool sustainedClick() {
-    clicksToBreak -= 1;
+    _clicksToBreak -= 1;
 
-    if(clicksToBreak == 0) {
+    if(_clicksToBreak == 0) {
       _reset();
       return false;
     } else {
@@ -40,11 +40,11 @@ abstract class Egg {
   }
   //resets egg to initial state
   void _reset() {
-    clicksToBreak = durability;
+    _clicksToBreak = _durability;
   }
 
   int dropCurrency() {
-    return minCurrencyGain + _random.nextInt(bonusCurrencyGain);
+    return _minCurrencyGain + _random.nextInt(_bonusCurrencyGain);
   }
 
   //will need changes when after Item Class implementation
