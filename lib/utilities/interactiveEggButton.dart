@@ -1,4 +1,5 @@
-import 'package:GIB_EG/objects/eggs/Egg.dart';
+import 'package:GIB_EG/models/eggs/Egg.dart';
+import 'package:GIB_EG/models/player.dart';
 import 'package:GIB_EG/utilities/particles.dart';
 import 'package:flutter/material.dart';
 import 'package:image_pixels/image_pixels.dart';
@@ -9,6 +10,7 @@ class InteractiveEggButton extends StatefulWidget {
   final void Function() onPressed;
   final UI.Image currencyImage;
   final List<UI.Image> numbers;
+  Player player;
 
   InteractiveEggButton({
     @required this.egg,
@@ -36,11 +38,13 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
             builder: (context, ImgDetails img) {
               return GestureDetector(
                 onTapDown: (TapDownDetails details) {
+
                   Offset particlesOffset = _getOffset(details);
 
                   if (_onEgg(img, (context.size.height - widget.egg.height) / 2, (context.size.width - widget.egg.width) / 2, particlesOffset.dx.toInt(), particlesOffset.dy.toInt())) {
                     if(!widget.egg.sustainedClick()) {
                       Color colorado = widget.egg.dropItem();//change to item later on
+                      widget.onPressed();
 
                       particles.add(Particles(
                         key: UniqueKey(),

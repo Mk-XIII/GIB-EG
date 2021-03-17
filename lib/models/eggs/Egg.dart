@@ -56,6 +56,6 @@ abstract class Egg {
     if(luckyNumber < 0.887625) return _items[2];
     if(luckyNumber < 0.950125) return _items[3];
     if(luckyNumber < 0.981345) return _items[4];
-    return _items[5];;
+    return _items[5];
   }
 }

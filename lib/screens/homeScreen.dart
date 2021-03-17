@@ -1,3 +1,4 @@
+import 'package:GIB_EG/models/player.dart';
 import 'package:flutter/material.dart';
 import 'package:GIB_EG/pages/inventory.dart';
 import 'package:GIB_EG/pages/profile.dart';
@@ -12,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var _controller = PageController(initialPage: 0);
   Map data = {};
+  Player player = Player();
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
           TappableEgg(
             currencyImage: data['currencyImage'],
             numbers: data['numbers'],
+            player: player,
           ),
           Inventory(),
           Profile(), //placeholder
@@ -36,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
       //TODO: change navigation bar style
       bottomNavigationBar: BottomAppBar(
-        color: Colors.transparent,
+        color: Colors.purple.shade200,
         elevation: 0, //gets rid of the shadow
         child: new Row(
           mainAxisSize: MainAxisSize.max,
