@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //TODO: implement
 
 class Profile extends StatefulWidget {
@@ -9,6 +10,13 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+    return Scaffold(
+      body: SafeArea(
+        child: Text('PROFILE PAGE'),//placeholder
+      ),
+
+      backgroundColor: Colors.greenAccent[400],
+    );
   }
 }

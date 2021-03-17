@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 //TODO: implement
 
 class Inventory extends StatefulWidget {
@@ -9,6 +10,7 @@ class Inventory extends StatefulWidget {
 class _InventoryState extends State<Inventory> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIOverlays([]);
     return Container();
   }
 }
