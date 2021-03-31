@@ -44,7 +44,7 @@ class _TappableEggState extends State<TappableEgg> {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/sprites/background.jpg"),
-          fit: BoxFit.fill,
+          fit: BoxFit.cover,
         ),
       ),
       child: Scaffold(

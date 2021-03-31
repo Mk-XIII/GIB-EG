@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:GIB_EG/pages/inventory.dart';
 import 'package:GIB_EG/pages/profile.dart';
 import 'package:GIB_EG/pages/tappableEgg.dart';
+import 'package:GIB_EG/pages/shop.dart';
 //for now it's looking like stateless widget
 
 class HomeScreen extends StatefulWidget {
@@ -35,6 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           Profile(), //placeholder
           Profile(),
+          Shop(player: data['player']),
         ],
       ),
 

@@ -10,6 +10,7 @@ void main() {
   ]);
 
   runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
     routes: {
       '/': (context) => Loading(),
       '/homeScreen': (contex) => HomeScreen(),
