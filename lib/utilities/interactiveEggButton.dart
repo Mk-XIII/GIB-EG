@@ -10,13 +10,14 @@ class InteractiveEggButton extends StatefulWidget {
   final void Function() onPressed;
   final UI.Image currencyImage;
   final List<UI.Image> numbers;
-  Player player;
+  final Player player;//change later
 
   InteractiveEggButton({
     @required this.egg,
     @required this.onPressed(),
     @required this.currencyImage,
-    @required this.numbers});
+    @required this.numbers,
+    @required this.player});
 
   @override
   _InteractiveEggButtonState createState() => _InteractiveEggButtonState();
@@ -44,6 +45,8 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
                   if (_onEgg(img, (context.size.height - widget.egg.height) / 2, (context.size.width - widget.egg.width) / 2, particlesOffset.dx.toInt(), particlesOffset.dy.toInt())) {
                     if(!widget.egg.sustainedClick()) {
                       Color colorado = widget.egg.dropItem();//change to item later on
+                      widget.player.addItem(colorado.value.toString());//change to item later on
+
                       widget.onPressed();
 
                       particles.add(Particles(

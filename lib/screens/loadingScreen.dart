@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'dart:ui' as UI;
 
+import 'package:GIB_EG/models/player.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -29,6 +30,7 @@ class _LoadingState extends State<Loading> {
     Navigator.pushReplacementNamed(context, route, arguments: {
       'currencyImage': currencyImage,
       'numbers' : numbers,
+      'player' : Player(),
     });
   }
 

@@ -13,7 +13,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   var _controller = PageController(initialPage: 0);
   Map data = {};
-  Player player = Player();
 
   @override
   Widget build(BuildContext context) {
@@ -29,9 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
           TappableEgg(
             currencyImage: data['currencyImage'],
             numbers: data['numbers'],
-            player: player,
+            player: data['player'],
           ),
-          Inventory(),
+          Inventory(
+            player: data['player'],
+          ),
           Profile(), //placeholder
           Profile(),
         ],

@@ -96,6 +96,7 @@ class _TappableEggState extends State<TappableEgg> {
                       flex: 4,
                       child: InteractiveEggButton(
                         egg: _eggs[_currentIndex],
+                        player: widget.player,
                         onPressed: () {
                           widget.player
                               .addMoney(_eggs[_currentIndex].dropCurrency());
@@ -123,8 +124,6 @@ class _TappableEggState extends State<TappableEgg> {
             ],
           ),
         ),
-        //TODO: create background images for each egg type
-        //backgroundColor: Colors.cyan[400],
         backgroundColor: Colors.transparent,
       ),
     );
