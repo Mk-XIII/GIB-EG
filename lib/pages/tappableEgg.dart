@@ -53,22 +53,31 @@ class _TappableEggState extends State<TappableEgg> {
             children: [
               Expanded(
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      child: Row(
-                        children: [
-                          Icon(EgCons.currency,
-                              size: 50,
-                              color: Color.fromRGBO(255, 231, 231, 100)),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            widget.player.getMoney().toString(),
-                            style: TextStyle(fontSize: 50),
-                          ),
-                        ],
-                      ),
+                    Row(
+                      children: [
+                        Icon(EgCons.currency,
+                            size: 50,
+                            color: Color.fromRGBO(255, 231, 231, 100)),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          widget.player.getMoney().toString(),
+                          style: TextStyle(fontSize: 50),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(EgCons.achievement,
+                            size: 50,
+                            color: Color.fromRGBO(255, 231, 231, 100)),
+                        Icon(EgCons.settings,
+                            size: 50,
+                            color: Color.fromRGBO(255, 231, 231, 100)),
+                      ],
                     ),
                   ],
                 ),

@@ -101,47 +101,59 @@ class _ShopState extends State<Shop> {
             child: Padding(
               padding: const EdgeInsets.all(7.5),
               child: Container(
-                child: CupertinoScrollbar(
-                  thickness: 5,
-                  child: ListView(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ShopItem(
+                decoration: BoxDecoration(
+                  color: Colors.transparent.withOpacity(0.2),
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: ShopItem(
                             itemName: "Whetstone",
                             price: "100",
                             icon: EgCons.profile,
+                            description: "+% to get a better quality item",
                           ),
-                          ShopItem(
+                        ),
+                        Expanded(
+                          child: ShopItem(
                             itemName: "Yellow spray can",
                             price: "50",
                             icon: EgCons.achievement,
+                            description: "+% to sold item value",
                           ),
-                          ShopItem(
+                        ),
+                        Expanded(
+                          child: ShopItem(
                             itemName: "Magnifying glass",
                             price: "200",
                             icon: EgCons.currency,
+                            description: "+% to get a better item",
                           ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ShopItem(
-                            itemName: "Broken mirror",
-                            price: "300",
-                            icon: EgCons.champion_cup,
-                          ),
-                          ShopItem(
-                            itemName: "Golden feather",
-                            price: "500",
-                            icon: EgCons.settings,
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ShopItem(
+                          itemName: "Broken mirror",
+                          price: "300",
+                          icon: EgCons.champion_cup,
+                          description: "+% to get two items instead of one",
+                        ),
+                        ShopItem(
+                          itemName: "Golden feather",
+                          price: "500",
+                          icon: EgCons.settings,
+                          description: "Clicking eg generates gold",
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
             ),
