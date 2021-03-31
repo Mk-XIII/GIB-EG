@@ -34,7 +34,7 @@ class _ShopState extends State<Shop> {
                 children: [
                   Row(
                     children: [
-                      Icon(EgCons.profile,
+                      Icon(EgCons.trading,
                           size: 50, color: Color.fromRGBO(255, 231, 231, 100)),
                       Text(
                         "SHOP",
@@ -66,7 +66,7 @@ class _ShopState extends State<Shop> {
                   child: Align(
                       alignment: Alignment.bottomCenter,
                       child: Text(
-                        "ITEM SHOP",
+                        "EG SHOP",
                         style: TextStyle(color: Colors.white, fontSize: 20),
                       )),
                   margin: const EdgeInsets.all(15.0),
@@ -107,6 +107,10 @@ class _ShopState extends State<Shop> {
                 ),
                 child: Column(
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text("BOOSTERS", style: TextStyle(color: Colors.white, fontSize: 25),),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -158,6 +162,10 @@ class _ShopState extends State<Shop> {
               ),
             ),
           ),
+          Expanded(
+              flex: 2,
+              child: SizedBox(width: double.infinity, height: 8.0),
+            ),
         ],
       ),
     );

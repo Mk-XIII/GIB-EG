@@ -145,6 +145,7 @@ class _InventoryState extends State<Inventory> {
               foreground: Paint()..color = Colors.yellow,
             ),),
       ));
+      
     });
 
     return widgets;
