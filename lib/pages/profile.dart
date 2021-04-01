@@ -11,12 +11,21 @@ class _ProfileState extends State<Profile> {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
-    return Scaffold(
-      body: SafeArea(
-        child: Text('PROFILE PAGE'),//placeholder
+    return Container(
+      child: Align(
+        alignment: Alignment.center,
+        child: Text(
+          "PLACEHOLDER",
+          textAlign: TextAlign.center,
+          style: TextStyle(color: Colors.white, fontSize: 50),
+        ),
       ),
-
-      backgroundColor: Colors.greenAccent[400],
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/sprites/background.jpg"),
+          fit: BoxFit.fill,
+        ),
+      ),
     );
   }
 }
