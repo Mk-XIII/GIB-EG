@@ -57,7 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: BottomAppBar(
                 color: Colors.transparent,
                 elevation: 0, //gets rid of the shadow
-                child: new Row(
+                child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   //TODO: decide on transition style
