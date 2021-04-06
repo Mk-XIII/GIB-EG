@@ -1,9 +1,10 @@
 import 'package:GIB_EG/models/booster.dart';
 import 'package:GIB_EG/models/player.dart';
-import 'package:GIB_EG/presentation/eg_cons_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:GIB_EG/widgets/shop_item.dart';
+
+import 'components/shop_header.dart';
+import 'components/shop_item.dart';
+import 'components/shop_type_button.dart';
 
 class Shop extends StatefulWidget {
   final Player player;
@@ -93,66 +94,4 @@ List<ShopItem> getShopItems() {
     shopItemList.add(ShopItem(booster: element));
   });
   return shopItemList;
-}
-
-class ShopTypeButton extends StatelessWidget {
-  final String text;
-
-  const ShopTypeButton({@required this.text});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Align(
-          alignment: Alignment.bottomCenter,
-          child: Text(
-            text,
-            style: TextStyle(color: Colors.white, fontSize: 20),
-          )),
-      margin: const EdgeInsets.all(15.0),
-      width: 150,
-      height: 150,
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.white, width: 3.0),
-      ),
-    );
-  }
-}
-
-class ShopHeader extends StatelessWidget {
-  final String money;
-  const ShopHeader({@required this.money});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 8.0, right: 8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Icon(EgCons.trading,
-                  size: 50, color: Color.fromRGBO(255, 231, 231, 100)),
-              Text(
-                "SHOP",
-                style: TextStyle(color: Colors.white, fontSize: 30),
-              ),
-            ],
-          ),
-          Row(
-            children: [
-              Icon(EgCons.currency,
-                  size: 50, color: Color.fromRGBO(255, 231, 231, 100)),
-              SizedBox(width: 10),
-              Text(
-                this.money,
-                style: TextStyle(fontSize: 40, color: Colors.white),
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
 }
