@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:GIB_EG/screens/loadingScreen.dart';
 import 'package:GIB_EG/Screens/homeScreen.dart';
+import 'package:provider/provider.dart';
+
+import 'models/player.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -9,12 +12,14 @@ void main() {
     SystemUiOverlay.bottom, //This line is used for showing the bottom bar
   ]);
 
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    
-    routes: {
-      '/': (context) => Loading(),
-      '/homeScreen': (contex) => HomeScreen(),
-    },
+  runApp(ChangeNotifierProvider<Player>(
+    create: (_) => Player(),
+    child: MaterialApp(
+      debugShowCheckedModeBanner: false,
+      routes: {
+        '/': (context) => Loading(),
+        '/homeScreen': (contex) => HomeScreen(),
+      },
+    ),
   ));
 }

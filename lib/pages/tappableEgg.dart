@@ -6,18 +6,17 @@ import 'package:GIB_EG/models/eggs/Egg.dart';
 import 'package:GIB_EG/models/eggs/FancyEgg.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'dart:ui' as UI;
 
 class TappableEgg extends StatefulWidget {
   final UI.Image currencyImage;
   final List<UI.Image> numbers;
-  final Player player;
 
   const TappableEgg(
       {@required this.currencyImage,
-      @required this.numbers,
-      @required this.player});
+      @required this.numbers});
 
   @override
   _TappableEggState createState() => _TappableEggState();
@@ -63,9 +62,11 @@ class _TappableEggState extends State<TappableEgg> {
                         SizedBox(
                           width: 10,
                         ),
-                        Text(
-                          widget.player.getMoney().toString(),
-                          style: TextStyle(fontSize: 50),
+                        Consumer<Player>(
+                          builder: (context, player, child) => Text(
+                            player.getMoney().toString(),
+                            style: TextStyle(fontSize: 50),
+                          ),
                         ),
                       ],
                     ),
@@ -105,12 +106,12 @@ class _TappableEggState extends State<TappableEgg> {
                       flex: 4,
                       child: InteractiveEggButton(
                         egg: _eggs[_currentIndex],
-                        player: widget.player,
                         onPressed: () {
-                          widget.player
-                              .addMoney(_eggs[_currentIndex].dropCurrency());
-                          widget.player.displayMoney();
-                          setState(() {});
+                          //Provider basically containes the current state of whatever object you specify.
+                          //You can access the provider from anywhere.
+                          //listen: false means that we shouldn't rerender the whole widget
+                          var player = Provider.of<Player>(context, listen: false);
+                          player.addMoney(_eggs[_currentIndex].dropCurrency());
                         },
                         currencyImage: widget.currencyImage,
                         numbers: widget.numbers,

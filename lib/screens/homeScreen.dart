@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:GIB_EG/pages/inventory.dart';
 import 'package:GIB_EG/pages/profile.dart';
 import 'package:GIB_EG/pages/tappableEgg.dart';
+import 'package:GIB_EG/models/player.dart';
+import 'package:provider/provider.dart';
 //for now it's looking like stateless widget
 
 class HomeScreen extends StatefulWidget {
@@ -20,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
     data = ModalRoute.of(context)
         .settings
         .arguments; //might need to update only once
-
+    //Idk if its the right place to put but this widget allows all child widgets to access provided object state
     return Scaffold(
       body: Stack(
         children: [
@@ -38,21 +40,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 TappableEgg(
                   currencyImage: data['currencyImage'],
                   numbers: data['numbers'],
-                  player: data['player'],
                 ),
-                Inventory(
-                  player: data['player'],
-                ),
+                Inventory(),
                 Profile(), //placeholder
                 Profile(),
-                Shop(player: data['player']),
+                Shop(),
               ],
             ),
           ),
           Align(
             alignment: Alignment.bottomCenter,
             child: Theme(
-              data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
+              data:
+                  Theme.of(context).copyWith(canvasColor: Colors.transparent),
               child: BottomAppBar(
                 color: Colors.transparent,
                 elevation: 0, //gets rid of the shadow
@@ -64,7 +64,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: IconButton(
                         iconSize: 65,
-                        icon: Icon(EgCons.template2, color: Colors.white,),
+                        icon: Icon(
+                          EgCons.template2,
+                          color: Colors.white,
+                        ),
                         onPressed: () {
                           _controller.animateToPage(
                             0,
@@ -77,7 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: IconButton(
                         iconSize: 65,
-                        icon: Icon(EgCons.currency, color: Colors.white,),
+                        icon: Icon(
+                          EgCons.currency,
+                          color: Colors.white,
+                        ),
                         onPressed: () {
                           _controller.animateToPage(
                             1,
@@ -90,7 +96,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: IconButton(
                         iconSize: 65,
-                        icon: Icon(EgCons.template1, color: Colors.white,),
+                        icon: Icon(
+                          EgCons.template1,
+                          color: Colors.white,
+                        ),
                         onPressed: () {
                           _controller.animateToPage(
                             2,
@@ -103,7 +112,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: IconButton(
                         iconSize: 65,
-                        icon: Icon(EgCons.profile, color: Colors.white,),
+                        icon: Icon(
+                          EgCons.profile,
+                          color: Colors.white,
+                        ),
                         onPressed: () {
                           _controller.animateToPage(
                             3,
@@ -116,7 +128,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     Expanded(
                       child: IconButton(
                         iconSize: 65,
-                        icon: Icon(EgCons.trading, color: Colors.white,),
+                        icon: Icon(
+                          EgCons.trading,
+                          color: Colors.white,
+                        ),
                         onPressed: () {
                           _controller.animateToPage(
                             4,

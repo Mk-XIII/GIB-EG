@@ -1,4 +1,6 @@
-class Player{
+import 'package:flutter/cupertino.dart';
+
+class Player extends ChangeNotifier{
   int _money = 0;
   Map<String, int> _items;//change to right types after item class implementation
 
@@ -8,6 +10,16 @@ class Player{
 
   void addMoney(int amount){
     this._money += amount;
+    notifyListeners();
+  }
+  bool substractMoney(int amount){
+    if(this._money - amount >= 0){
+      this._money -= amount;
+      notifyListeners();
+      return true;
+    }
+    notifyListeners();
+    return false;
   }
   void displayMoney(){
     print(_money);

@@ -1,9 +1,10 @@
+import 'package:GIB_EG/models/player.dart';
 import 'package:GIB_EG/presentation/eg_cons_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ShopHeader extends StatelessWidget {
-  final String money;
-  const ShopHeader({@required this.money});
+  const ShopHeader();
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +28,12 @@ class ShopHeader extends StatelessWidget {
               Icon(EgCons.currency,
                   size: 50, color: Color.fromRGBO(255, 231, 231, 100)),
               SizedBox(width: 10),
-              Text(
-                this.money,
-                style: TextStyle(fontSize: 40, color: Colors.white),
+              //If we want to just access the current state of specified object we wrap widget with consumer widget
+              Consumer<Player>(
+                builder: (context, player, child) => Text(
+                  player.getMoney().toString(),
+                  style: TextStyle(fontSize: 40, color: Colors.white),
+                ),
               ),
             ],
           ),
