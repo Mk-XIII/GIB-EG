@@ -29,10 +29,7 @@ class _TappableEggState extends State<TappableEgg> {
   @override
   void initState() {
     // TODO: implement initState
-    _eggs = [
-      BasicEgg(),
-      FancyEgg(),
-    ];
+    _eggs = Provider.of<Player>(context, listen: false).getEgs();
     super.initState();
   }
 

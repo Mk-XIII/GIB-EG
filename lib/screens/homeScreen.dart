@@ -22,7 +22,6 @@ class _HomeScreenState extends State<HomeScreen> {
     data = ModalRoute.of(context)
         .settings
         .arguments; //might need to update only once
-    //Idk if its the right place to put but this widget allows all child widgets to access provided object state
     return Scaffold(
       body: Stack(
         children: [

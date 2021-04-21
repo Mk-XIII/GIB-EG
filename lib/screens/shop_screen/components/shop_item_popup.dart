@@ -33,6 +33,7 @@ class ShopItemPopup extends StatelessWidget {
               onTap: () {
                 var player = Provider.of<Player>(context, listen: false);
                 player.substractMoney(booster.price);
+                player.addBooster(booster);
               },
               child: Container(
                 decoration: BoxDecoration(

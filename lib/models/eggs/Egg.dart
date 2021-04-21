@@ -58,4 +58,8 @@ abstract class Egg {
     if(luckyNumber < 0.981345) return _items[4];
     return _items[5];
   }
+  void changeProperties(int x, int y){
+    this._minCurrencyGain = x;
+    this._bonusCurrencyGain = y;
+  }
 }

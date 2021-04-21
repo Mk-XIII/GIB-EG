@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:GIB_EG/screens/loadingScreen.dart';
 import 'package:GIB_EG/Screens/homeScreen.dart';
 import 'package:provider/provider.dart';
-
 import 'models/player.dart';
 
 void main() {
@@ -11,7 +10,7 @@ void main() {
   SystemChrome.setEnabledSystemUIOverlays([
     SystemUiOverlay.bottom, //This line is used for showing the bottom bar
   ]);
-
+  //Probably not the right place to put but this widget allows all child widgets to access provided object state
   runApp(ChangeNotifierProvider<Player>(
     create: (_) => Player(),
     child: MaterialApp(
