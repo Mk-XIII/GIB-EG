@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 class Item {
+  int id;
   String name;
   String description;
   String sprite;
@@ -8,15 +7,7 @@ class Item {
   String quality;
   int value;
 
-  Item(String name, String description, String sprite, String rarity,
-      String quality, int value) {
-    this.name = name;
-    this.description = description;
-    this.sprite = sprite;
-    this.rarity = rarity;
-    this.quality = quality;
-    this.value = value;
-  }
+  Item({this.id, this.name, this.description, this.sprite, this.rarity, this.quality, this.value});
 
   void displayItem() {
     print("Info: " + quality + " " + name + " - " + description);

@@ -6,6 +6,7 @@ class Booster {
   String description;
   int price;
   IconData icon;
+  String sprite;
 
   Booster(String name, String description, int price, IconData icon) {
     this.name = name;

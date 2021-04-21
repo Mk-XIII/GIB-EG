@@ -1,4 +1,6 @@
+import 'package:GIB_EG/models/Item/item.dart';
 import 'package:GIB_EG/models/player.dart';
+import 'package:GIB_EG/screens/inventory_screen/components/inventory_grid_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -143,22 +145,12 @@ class _InventoryState extends State<Inventory> {
   }
 
   //change later into generator function
-  List<Container> generateObjects(Map<String, int> items) {
-    List<Container> widgets = [];
+  List<GridItem> generateObjects(Map<Item, int> items) {
+    List<GridItem> widgets = [];
 
     items.forEach((k, v) {
-      widgets.add(Container(
-        color: Color(int.parse(k)),
-        child: Text(
-          v.toString(),
-          style: TextStyle(
-            fontSize: 50,
-            foreground: Paint()..color = Colors.yellow,
-          ),
-        ),
-      ));
+      widgets.add(GridItem(item: k, quanity: v));
     });
-
     return widgets;
   }
 }

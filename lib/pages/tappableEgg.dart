@@ -14,9 +14,7 @@ class TappableEgg extends StatefulWidget {
   final UI.Image currencyImage;
   final List<UI.Image> numbers;
 
-  const TappableEgg(
-      {@required this.currencyImage,
-      @required this.numbers});
+  const TappableEgg({@required this.currencyImage, @required this.numbers});
 
   @override
   _TappableEggState createState() => _TappableEggState();
@@ -69,6 +67,17 @@ class _TappableEggState extends State<TappableEgg> {
                     ),
                     Row(
                       children: [
+                        Consumer<Player>(
+                          builder: (context, player, child) {
+                            return player.isBoosterActive()
+                                ? Icon(
+                                    Icons.alarm_on,
+                                    size: 50,
+                                    color: Color.fromRGBO(255, 231, 231, 100),
+                                  )
+                                : SizedBox.shrink();
+                          },
+                        ),
                         Icon(EgCons.achievement,
                             size: 50,
                             color: Color.fromRGBO(255, 231, 231, 100)),
@@ -107,7 +116,8 @@ class _TappableEggState extends State<TappableEgg> {
                           //Provider basically containes the current state of whatever object you specify.
                           //You can access the provider from anywhere.
                           //listen: false means that we shouldn't rerender the whole widget
-                          var player = Provider.of<Player>(context, listen: false);
+                          var player =
+                              Provider.of<Player>(context, listen: false);
                           player.addMoney(_eggs[_currentIndex].dropCurrency());
                         },
                         currencyImage: widget.currencyImage,

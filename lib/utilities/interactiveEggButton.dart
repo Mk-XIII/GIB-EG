@@ -45,8 +45,7 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
                   if (_onEgg(img, (context.size.height - widget.egg.height) / 2, (context.size.width - widget.egg.width) / 2, particlesOffset.dx.toInt(), particlesOffset.dy.toInt())) {
                     if(!widget.egg.sustainedClick()) {
                       var player = Provider.of<Player>(context, listen: false);
-                      Color colorado = widget.egg.dropItem();//change to item later on
-                      player.addItem(colorado.value.toString());//change to item later on
+                      var color = player.addItem(widget.egg.dropItem());//change to item later on
 
                       widget.onPressed();
 
@@ -59,7 +58,7 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
                         particle: RarityParticles(
                           children: List<Particle>.generate(125, (count) => 
                             ColoredCircle(
-                              color: colorado,
+                              color: color,
                               offset: particlesOffset,
                               radius: Randoms.rnd.nextInt(25).toDouble()))
                           ),

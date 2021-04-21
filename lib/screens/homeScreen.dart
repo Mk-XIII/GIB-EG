@@ -1,12 +1,10 @@
+import 'package:GIB_EG/pages/profile.dart';
+import 'package:GIB_EG/pages/tappableEgg.dart';
 import 'package:GIB_EG/presentation/eg_cons_icons.dart';
 import 'package:GIB_EG/screens/shop_screen/shop_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:GIB_EG/pages/inventory.dart';
-import 'package:GIB_EG/pages/profile.dart';
-import 'package:GIB_EG/pages/tappableEgg.dart';
-import 'package:GIB_EG/models/player.dart';
-import 'package:provider/provider.dart';
-//for now it's looking like stateless widget
+
+import 'inventory_screen/inventory.dart';
 
 class HomeScreen extends StatefulWidget {
   @override

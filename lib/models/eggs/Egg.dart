@@ -1,5 +1,5 @@
 // TODO: add missing functionality
-import 'package:flutter/material.dart';
+import 'package:GIB_EG/models/Item/item.dart';
 import 'dart:math';
 
 abstract class Egg {
@@ -11,20 +11,20 @@ abstract class Egg {
   double width;
   double height;
   Random _random;
-  List<Color> _items;//change to Item class after implementation
+  List<Item> _droppableItems;//change to Item class after implementation
 
 
-  Egg(int _durability, int _clicksToBreak, int _minCurrencyGain, int _bonusCurrencyGain, String sprite, double width, double height)
+  Egg(int durability, int clicksToBreak, int minCurrencyGain, int bonusCurrencyGain, String sprite, double width, double height, List<Item> droppableItems)
   {
-    this._durability = _durability;
-    this._clicksToBreak = _clicksToBreak;
-    this._minCurrencyGain = _minCurrencyGain;
-    this._bonusCurrencyGain = _bonusCurrencyGain;
+    this._durability = durability;
+    this._clicksToBreak = clicksToBreak;
+    this._minCurrencyGain = minCurrencyGain;
+    this._bonusCurrencyGain = bonusCurrencyGain;
     this.sprite = sprite;
     this.width = width;
     this.height = height;
     this._random = Random();
-    this._items = [Colors.white, Colors.green, Colors.indigoAccent, Colors.purpleAccent, Colors.orange, Colors.black];
+    this._droppableItems = droppableItems;
   }
 
   //returns false when egg breaks
@@ -48,16 +48,17 @@ abstract class Egg {
   }
 
   //will need changes when after Item Class implementation
-  Color dropItem() {
+  Item dropItem() {
     //.50 .762625 .887625 .950125 .981345 .996970 basic destribution
     double luckyNumber = _random.nextDouble();
-    if(luckyNumber < 0.5) return _items[0];
-    if(luckyNumber < 0.762625) return _items[1];
-    if(luckyNumber < 0.887625) return _items[2];
-    if(luckyNumber < 0.950125) return _items[3];
-    if(luckyNumber < 0.981345) return _items[4];
-    return _items[5];
+    if(luckyNumber < 0.5) return _droppableItems[0];
+    // if(luckyNumber < 0.762625) return _droppableItems[1];
+    // if(luckyNumber < 0.887625) return _droppableItems[2];
+    // if(luckyNumber < 0.950125) return _droppableItems[3];
+    // if(luckyNumber < 0.981345) return _droppableItems[4];
+    return _droppableItems[1];
   }
+  //temporary function to represent that boosters work
   void changeProperties(int x, int y){
     this._minCurrencyGain = x;
     this._bonusCurrencyGain = y;
