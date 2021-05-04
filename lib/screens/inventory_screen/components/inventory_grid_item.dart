@@ -13,7 +13,7 @@ class GridItem extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Image.asset(item.sprite, width: 60, height: 60,),
+            Image.asset(item.sprite, width: 100, height: 100,),
             Text(item.name),
             Text(quanity.toString()),
           ],

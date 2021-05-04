@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
         .settings
         .arguments; //might need to update only once
     return Scaffold(
+      resizeToAvoidBottomInset : false,//prevents widgets resizing when keyboard appears
       body: Stack(
         children: [
           Container(
