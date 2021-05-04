@@ -42,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Profile(), //placeholder
                 Profile(),
                 Shop(),
+
               ],
             ),
           ),
