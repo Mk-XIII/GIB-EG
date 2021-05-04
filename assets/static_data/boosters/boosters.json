@@ -1,0 +1,10 @@
+{
+    "boosters":[
+       {
+          "name":"Whetstone",
+          "description":"+% to get a better quality item",
+          "price":100,
+          "sprite":"assets/boosters/whetstone.png"
+       }
+    ]
+ }

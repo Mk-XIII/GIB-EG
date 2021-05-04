@@ -40,7 +40,7 @@ class ShopItem extends StatelessWidget {
               ),
             ),
             SizedBox(height: 7),
-            Icon(this.booster.icon, size: 50, color: Colors.white),
+            Image.asset(this.booster.sprite, width: 75, height: 75,),
             SizedBox(height: 7),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

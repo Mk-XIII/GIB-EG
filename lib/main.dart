@@ -1,3 +1,4 @@
+import 'package:GIB_EG/screens/welcome_screen/welcome_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:GIB_EG/screens/loadingScreen.dart';
@@ -16,7 +17,8 @@ void main() {
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => Loading(),
+        '/': (context) => WelcomeScreen(),
+        '/loading': (context) => Loading(),
         '/homeScreen': (contex) => HomeScreen(),
       },
     ),
