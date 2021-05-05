@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:GIB_EG/models/Item/item.dart';
+import 'package:GIB_EG/models/PlayerStatistics.dart';
 import 'package:GIB_EG/models/eggs/BasicEgg.dart';
 import 'package:GIB_EG/models/eggs/FancyEgg.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,12 +16,22 @@ class Player extends ChangeNotifier{
   Map<Item, int> _items;//change to right types after item class implementation
   Map<Booster, int> _boosters; //boosters that are currently in use
   List<Egg> _egs; //egs that are bought
+  PlayerStatistics _stats;
 
   Player() {
     _items = Map();
     _boosters = Map();
     //for now this is hardcoded
     _egs = [BasicEgg(), FancyEgg()];
+    _stats = PlayerStatistics();
+  }
+
+  void setStats(){
+    _stats.totalClicks += 1;
+  }
+
+  PlayerStatistics getStats(){
+    return this._stats;
   }
 
   bool isBoosterActive(){
@@ -28,6 +39,7 @@ class Player extends ChangeNotifier{
   }
   void addMoney(int amount){
     this._money += amount;
+    this._stats.totalMoneyEarned += amount;
     notifyListeners();
   }
   bool substractMoney(int amount){
