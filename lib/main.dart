@@ -8,9 +8,12 @@ import 'models/player.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  //UI
   SystemChrome.setEnabledSystemUIOverlays([
     SystemUiOverlay.bottom, //This line is used for showing the bottom bar
   ]);
+
   //Probably not the right place to put but this widget allows all child widgets to access provided object state
   runApp(ChangeNotifierProvider<Player>(
     create: (_) => Player(),
