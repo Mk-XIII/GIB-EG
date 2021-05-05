@@ -2,6 +2,7 @@ import 'package:GIB_EG/components/already_have_an_account_acheck.dart';
 import 'package:GIB_EG/components/rounded_button.dart';
 import 'package:GIB_EG/components/rounded_input_field.dart';
 import 'package:GIB_EG/components/rounded_password_field.dart';
+import 'package:GIB_EG/constants.dart';
 import 'package:GIB_EG/screens/homeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:GIB_EG/components/background.dart';
@@ -35,8 +36,8 @@ class Body extends StatelessWidget {
             ),
             RoundedButton(
               text: "LOGIN",
-              color: Color.fromRGBO(50, 21, 55, 100),
-              textColor: Color.fromRGBO(255, 231, 231, 100),
+              color: buttonColorPrimary,
+              textColor: buttonColorText,
               press: () {
                 Navigator.pushReplacementNamed(
                   context, 

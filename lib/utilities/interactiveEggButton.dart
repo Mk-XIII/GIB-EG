@@ -46,6 +46,7 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
                     if(!widget.egg.sustainedClick()) {
                       var player = Provider.of<Player>(context, listen: false);
                       var color = player.addItem(widget.egg.dropItem());//change to item later on
+                      player.setStats();
 
                       widget.onPressed();
 

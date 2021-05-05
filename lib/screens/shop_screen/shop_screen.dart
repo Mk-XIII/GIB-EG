@@ -1,14 +1,13 @@
+import 'package:GIB_EG/components/screen_header.dart';
 import 'package:GIB_EG/models/booster.dart';
 import 'package:GIB_EG/models/player.dart';
+import 'package:GIB_EG/presentation/eg_cons_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'components/shop_header.dart';
 import 'components/shop_item.dart';
 import 'components/shop_type_button.dart';
 
 class Shop extends StatefulWidget {
-
   const Shop();
 
   @override
@@ -21,7 +20,24 @@ class ShopState extends State<Shop> {
     return Container(
       child: Column(
         children: [
-          ShopHeader(),
+          ScreenHeader(
+            screenName: "SHOP",
+            screenIcon: EgCons.trading,
+            additionalInfo: Row(
+              children: [
+                Icon(EgCons.currency,
+                    size: 50, color: Color.fromRGBO(255, 231, 231, 100)),
+                SizedBox(width: 10),
+                //If we want to just access the current state of specified object we wrap widget with consumer widget
+                Consumer<Player>(
+                  builder: (context, player, child) => Text(
+                    player.getMoney().toString(),
+                    style: TextStyle(fontSize: 40, color: Colors.white),
+                  ),
+                ),
+              ],
+            ),
+          ),
           Expanded(
             flex: 3,
             child: Row(
@@ -87,9 +103,7 @@ class ShopState extends State<Shop> {
     List<ShopItem> shopItemList = [];
 
     boosters.forEach((element) {
-      shopItemList.add(ShopItem(
-        booster: element
-      ));
+      shopItemList.add(ShopItem(booster: element));
     });
     return shopItemList;
   }

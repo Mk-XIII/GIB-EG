@@ -1,6 +1,6 @@
-import 'package:GIB_EG/pages/profile.dart';
 import 'package:GIB_EG/pages/tappableEgg.dart';
 import 'package:GIB_EG/presentation/eg_cons_icons.dart';
+import 'package:GIB_EG/screens/profile_screen/profile_screen.dart';
 import 'package:GIB_EG/screens/shop_screen/shop_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -40,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   numbers: data['numbers'],
                 ),
                 Inventory(),
-                Profile(), //placeholder
-                Profile(),
+                ProfileScreen(), 
+                ProfileScreen(),
                 Shop(),
 
               ],

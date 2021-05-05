@@ -34,7 +34,7 @@ class ShopItemPopup extends StatelessWidget {
                 var player = Provider.of<Player>(context, listen: false);
                 if(player.substractMoney(booster.price)){
                   player.addBooster(booster);
-                  
+                  Navigator.pop(context);                 
                 }               
               },
               child: Container(
