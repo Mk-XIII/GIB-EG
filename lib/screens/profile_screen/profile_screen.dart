@@ -2,10 +2,11 @@ import 'package:GIB_EG/components/rounded_button.dart';
 import 'package:GIB_EG/components/screen_header.dart';
 import 'package:GIB_EG/constants.dart';
 import 'package:GIB_EG/presentation/eg_cons_icons.dart';
-import 'package:GIB_EG/screens/login_screen/login_screen.dart';
 import 'package:GIB_EG/screens/statistics_screen/statistics_screen.dart';
+import 'package:GIB_EG/utilities/authentication_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen();
@@ -47,6 +48,15 @@ class ProfileScreen extends StatelessWidget {
                         MaterialPageRoute(builder: (context) {
                       return StatisticsScreen();
                     }));
+                  },
+                ),
+                RoundedButton(
+                  text: "Sign out",
+                  color: buttonColorPrimary,
+                  textColor: buttonColorText,
+                  press: () {
+                    Provider.of<AuthenticationService>(context, listen: false).signOut();
+                    Navigator.pushReplacementNamed(context, "/");
                   },
                 ),
               ],
