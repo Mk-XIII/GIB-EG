@@ -1,7 +1,5 @@
-import 'package:GIB_EG/screens/login_screen/login_screen.dart';
-import 'package:GIB_EG/screens/signup_screen/signup_screen.dart';
 import 'package:GIB_EG/screens/welcome_screen/welcome_screen.dart';
-import 'package:GIB_EG/utilities/authentication_service.dart';
+import 'package:GIB_EG/utilities/authentication_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

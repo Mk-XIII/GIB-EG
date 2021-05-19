@@ -3,7 +3,7 @@ import 'package:GIB_EG/components/rounded_button.dart';
 import 'package:GIB_EG/components/rounded_input_field.dart';
 import 'package:GIB_EG/components/rounded_password_field.dart';
 import 'package:GIB_EG/screens/login_screen/login_screen.dart';
-import 'package:GIB_EG/utilities/authentication_service.dart';
+import 'package:GIB_EG/utilities/authentication_services.dart';
 import 'package:flutter/material.dart';
 import 'package:GIB_EG/components/background.dart';
 import 'package:provider/provider.dart';
