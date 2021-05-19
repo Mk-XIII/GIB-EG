@@ -1,9 +1,7 @@
 import 'package:GIB_EG/models/player.dart';
 import 'package:GIB_EG/presentation/eg_cons_icons.dart';
 import 'package:GIB_EG/utilities/interactiveEggButton.dart';
-import 'package:GIB_EG/models/eggs/BasicEgg.dart';
 import 'package:GIB_EG/models/eggs/Egg.dart';
-import 'package:GIB_EG/models/eggs/FancyEgg.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,9 +10,8 @@ import 'dart:ui' as UI;
 
 class TappableEgg extends StatefulWidget {
   final UI.Image currencyImage;
-  final List<UI.Image> numbers;
 
-  const TappableEgg({@required this.currencyImage, @required this.numbers});
+  const TappableEgg({@required this.currencyImage});
 
   @override
   _TappableEggState createState() => _TappableEggState();
@@ -121,7 +118,6 @@ class _TappableEggState extends State<TappableEgg> {
                           player.addMoney(_eggs[_currentIndex].dropCurrency());
                         },
                         currencyImage: widget.currencyImage,
-                        numbers: widget.numbers,
                       ),
                     ),
                     Expanded(

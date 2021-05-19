@@ -11,13 +11,11 @@ class InteractiveEggButton extends StatefulWidget {
   final Egg egg;
   final void Function() onPressed;
   final UI.Image currencyImage;
-  final List<UI.Image> numbers;
 
   InteractiveEggButton({
     @required this.egg,
     @required this.onPressed(),
-    @required this.currencyImage,
-    @required this.numbers});
+    @required this.currencyImage,});
 
   @override
   _InteractiveEggButtonState createState() => _InteractiveEggButtonState();

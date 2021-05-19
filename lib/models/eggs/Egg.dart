@@ -3,6 +3,7 @@ import 'package:GIB_EG/models/Item/item.dart';
 import 'dart:math';
 
 abstract class Egg {
+  int _id;
   int _durability;//how much clicks an egg must withstand before breaking
   int _clicksToBreak;//clicks before breaking
   int _minCurrencyGain;
@@ -14,8 +15,9 @@ abstract class Egg {
   List<Item> _droppableItems;//change to Item class after implementation
 
 
-  Egg(int durability, int clicksToBreak, int minCurrencyGain, int bonusCurrencyGain, String sprite, double width, double height, List<Item> droppableItems)
+  Egg(int id, int durability, int clicksToBreak, int minCurrencyGain, int bonusCurrencyGain, String sprite, double width, double height, List<Item> droppableItems)
   {
+    this._id = id;
     this._durability = durability;
     this._clicksToBreak = clicksToBreak;
     this._minCurrencyGain = minCurrencyGain;

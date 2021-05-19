@@ -1,3 +1,5 @@
+import 'package:GIB_EG/models/player.dart';
+import 'package:GIB_EG/utilities/database_services.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthenticationService {
@@ -7,7 +9,8 @@ class AuthenticationService {
 
   Stream<User> get authStateChanges => _firebaseAuth.authStateChanges();
 
-  Future<void> signOut() async {
+  Future<void> signOut(Player player, DatabaseService db) async {
+    await db.updateUserData(player, getUserId());
     await _firebaseAuth.signOut();
   }
 
@@ -21,13 +24,26 @@ class AuthenticationService {
     }
   }
 
-  Future<String> singUp({String email, String password}) async {
+  Future<String> singUp({String email, String password, String username, DatabaseService db}) async {
     try {
       await _firebaseAuth.createUserWithEmailAndPassword(
           email: email, password: password);
+      
+      Map<String, dynamic> userData = {
+        "Username"  : username,
+        "Money"     : 0,
+        "Stats"     : [0,0,0],
+        "Items"     : new Map<int,int>(),
+        "Eggs"      : new Map<int,int>(),
+        "Boosters"  : new Map<int,int>(),
+      };
+
+      await db.uploadUserInfo(userData, getUserId());
       return "Signed up";
     } on FirebaseAuthException catch (e) {
       return e.message;
     }
   }
+
+  String getUserId() => _firebaseAuth.currentUser.uid;
 }

@@ -4,6 +4,7 @@ import 'package:GIB_EG/presentation/eg_cons_icons.dart';
 import 'package:flutter/widgets.dart';
 
 class Booster {
+  int id;
   String name;
   String description;
   int price;

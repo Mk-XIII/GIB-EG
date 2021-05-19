@@ -27,7 +27,7 @@ dependencies:
     sdk: flutter
   firebase_core: ^1.1.1
   firebase_auth: ^1.1.4
-  firebase_database: ^6.1.2
+  cloud_firestore: ^2.2.0
   image_pixels: ^2.0.0
 
 
@@ -58,7 +58,6 @@ flutter:
   assets:
     - assets/icons/
     - assets/sprites/
-    - assets/numbers/
     - assets/items/
     - assets/boosters/
     - assets/static_data/boosters/
