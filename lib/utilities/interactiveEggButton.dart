@@ -31,11 +31,11 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
     return Stack(
       alignment: AlignmentDirectional.center,
       children: [
-        Image.asset(widget.egg.sprite,
+        Image.asset(widget.egg.sprites[widget.egg.currentIndex],
             width: widget.egg.width, height: widget.egg.height),
         ...particles.toList(),
         ImagePixels(
-            imageProvider: AssetImage(widget.egg.sprite),
+            imageProvider: AssetImage(widget.egg.sprites[widget.egg.currentIndex]),
             builder: (context, ImgDetails img) {
               return GestureDetector(
                 onTapDown: (TapDownDetails details) {
@@ -43,7 +43,7 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
                   Offset particlesOffset = _getOffset(details);
 
                   if (_onEgg(img, (context.size.height - widget.egg.height) / 2, (context.size.width - widget.egg.width) / 2, particlesOffset.dx.toInt(), particlesOffset.dy.toInt())) {
-                    if(!widget.egg.sustainedClick()) {
+                    if(!widget.egg.sustainedClick()) {                   
                       var player = Provider.of<Player>(context, listen: false);
                       var color = player.addItem(widget.egg.dropItem());//change to item later on
                       player.setStats();

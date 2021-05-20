@@ -79,6 +79,19 @@ class Player extends ChangeNotifier{
     return item.name == "Discustang" ? Colors.blue : item.name == "34D Printer" ? Colors.red : item.name == "Moodle expert" ? Colors.green : Colors.black; 
   }
 
+  void removeItem(Item item){
+    var toRemove = [];
+    _items.forEach((key, value) {
+      if(key.id == item.id){
+        _items[key] -= 1;
+        if(_items[key] == 0) toRemove.add(key);
+      }
+    });
+    
+    _items.removeWhere((key, value) => toRemove.contains(key));
+
+  }
+
   Map<Item, int> getItems() {
     return _items;
   }

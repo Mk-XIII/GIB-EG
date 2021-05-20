@@ -1,13 +1,16 @@
+import 'package:flutter/cupertino.dart';
+
 class Item {
   int id;
   String name;
   String description;
   String sprite;
-  String rarity;
+  Color rarity;
+  String rarityString;
   String quality;
   int value;
 
-  Item({this.id, this.name, this.description, this.sprite, this.rarity, this.quality, this.value});
+  Item({this.id, this.name, this.description, this.sprite, this.rarity, this.quality, this.value, this.rarityString});
 
   void displayItem() {
     print("Info: " + quality + " " + name + " - " + description);

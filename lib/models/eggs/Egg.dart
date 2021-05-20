@@ -2,46 +2,55 @@
 import 'package:GIB_EG/models/Item/item.dart';
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 abstract class Egg {
   int _durability;//how much clicks an egg must withstand before breaking
   int _clicksToBreak;//clicks before breaking
+  int _clicksToBreakConst;
   int _minCurrencyGain;
   int _bonusCurrencyGain;
-  String sprite;//egg sprite name
+  int currentIndex = 0;
   double width;
   double height;
   Random _random;
   List<Item> _droppableItems;//change to Item class after implementation
+  List<String> sprites;
 
 
-  Egg(int durability, int clicksToBreak, int minCurrencyGain, int bonusCurrencyGain, String sprite, double width, double height, List<Item> droppableItems)
+  Egg(int durability, int clicksToBreak, int minCurrencyGain, int bonusCurrencyGain, double width, double height, List<Item> droppableItems, List<String> sprites)
   {
     this._durability = durability;
     this._clicksToBreak = clicksToBreak;
     this._minCurrencyGain = minCurrencyGain;
     this._bonusCurrencyGain = bonusCurrencyGain;
-    this.sprite = sprite;
     this.width = width;
     this.height = height;
     this._random = Random();
     this._droppableItems = droppableItems;
+    this.sprites = sprites;
+    this._clicksToBreakConst = this._clicksToBreak;
   }
 
   //returns false when egg breaks
   bool sustainedClick() {
+
+    print(_clicksToBreak.toString());
     _clicksToBreak -= 1;
+    if(_clicksToBreak == (_clicksToBreakConst / 4).round() * (4 - (currentIndex + 1))){
+      currentIndex += 1;
+    }
 
     if(_clicksToBreak == 0) {
-      _reset();
+      currentIndex = 0;
+      _clicksToBreak = _clicksToBreakConst;
       return false;
     } else {
       return true;
     }
   }
-  //resets egg to initial state
-  void _reset() {
-    _clicksToBreak = _durability;
-  }
+
 
   int dropCurrency() {
     return _minCurrencyGain + _random.nextInt(_bonusCurrencyGain);

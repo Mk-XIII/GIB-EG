@@ -9,6 +9,7 @@ import 'package:GIB_EG/components/background.dart';
 import 'package:provider/provider.dart';
 
 class Body extends StatelessWidget {
+  final TextEditingController usernamecontroller = TextEditingController();
   final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
 
@@ -25,7 +26,11 @@ class Body extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(height: size.height * 0.03),
-           
+            RoundedInputField(
+              controller: usernamecontroller,
+              hintText: "Username",
+              onChanged: (value) {},
+            ),
             RoundedInputField(
               controller: emailcontroller,
               hintText: "Your Email",
@@ -40,15 +45,17 @@ class Body extends StatelessWidget {
               textColor: Color.fromRGBO(255, 231, 231, 100),
               text: "SIGNUP",
               press: () async {
-                String result = await context.read<AuthenticationService>().singUp(
-                  email: emailcontroller.text,
-                  password: passwordcontroller.text,
-                );
+                String result =
+                    await context.read<AuthenticationService>().singUp(
+                          email: emailcontroller.text,
+                          password: passwordcontroller.text,
+                        );
 
-                if(result != "Signed up") {
+                if (result != "Signed up") {
                   //implement what to do on insuccessful sign up attempt
                 } else {
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => LoginScreen()));
                 }
               },
             ),
@@ -56,7 +63,8 @@ class Body extends StatelessWidget {
             AlreadyHaveAnAccountCheck(
               login: false,
               press: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
               },
             ),
           ],

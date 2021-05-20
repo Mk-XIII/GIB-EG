@@ -46,11 +46,11 @@ class Body extends StatelessWidget {
                           password: passwordcontroller.text,
                         );
 
-                if (result != "Signed in") {
+                //if (result != "Signed in") {
                   //implement what to do on unsuccessful sign in attempt
-                } else {
+                //} else {
                   Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Loading()));
-                }
+                //}
               },
             ),
             SizedBox(height: size.height * 0.03),
