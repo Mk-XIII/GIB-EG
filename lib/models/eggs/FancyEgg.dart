@@ -5,7 +5,7 @@ import 'Egg.dart';
 
 class FancyEgg extends Egg {
   FancyEgg()
-      : super(1, 10, 4, 10, 250, 256, [
+      : super(1, 1, 10, 4, 10, 250, 256, [
           Item(
               id: 3,
               name: "Moodle expert",

@@ -5,7 +5,7 @@ import 'Egg.dart';
 
 class BasicEgg extends Egg {
   BasicEgg()
-      : super(1, 60, 50, 59, 250, 341, [
+      : super(0, 1, 60, 50, 59, 250, 341, [
           Item(
               id: 1,
               name: "The Letter 'A'",

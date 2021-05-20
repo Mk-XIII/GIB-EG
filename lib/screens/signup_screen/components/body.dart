@@ -4,6 +4,7 @@ import 'package:GIB_EG/components/rounded_input_field.dart';
 import 'package:GIB_EG/components/rounded_password_field.dart';
 import 'package:GIB_EG/screens/login_screen/login_screen.dart';
 import 'package:GIB_EG/utilities/authentication_services.dart';
+import 'package:GIB_EG/utilities/database_services.dart';
 import 'package:flutter/material.dart';
 import 'package:GIB_EG/components/background.dart';
 import 'package:provider/provider.dart';
@@ -32,6 +33,11 @@ class Body extends StatelessWidget {
               onChanged: (value) {},
             ),
             RoundedInputField(
+              controller: usernamecontroller,
+              hintText: "Username",
+              onChanged: (value) {},
+            ),
+            RoundedInputField(
               controller: emailcontroller,
               hintText: "Your Email",
               onChanged: (value) {},
@@ -45,11 +51,20 @@ class Body extends StatelessWidget {
               textColor: Color.fromRGBO(255, 231, 231, 100),
               text: "SIGNUP",
               press: () async {
+<<<<<<< HEAD
                 String result =
                     await context.read<AuthenticationService>().singUp(
                           email: emailcontroller.text,
                           password: passwordcontroller.text,
                         );
+=======
+                String result = await context.read<AuthenticationService>().singUp(
+                  email: emailcontroller.text,
+                  password: passwordcontroller.text,
+                  username: usernamecontroller.text,
+                  db: Provider.of<DatabaseService>(context, listen: false),
+                );
+>>>>>>> e74820f90f4f3e942d4bd6cb493025f3820c3681
 
                 if (result != "Signed up") {
                   //implement what to do on insuccessful sign up attempt

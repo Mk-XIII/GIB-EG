@@ -3,8 +3,11 @@ import 'dart:typed_data';
 import 'dart:ui' as UI;
 
 import 'package:GIB_EG/models/player.dart';
+import 'package:GIB_EG/utilities/authentication_services.dart';
+import 'package:GIB_EG/utilities/database_services.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -20,17 +23,14 @@ class _LoadingState extends State<Loading> {
 
   //probably possible to optimize with parallelization
   void changePage(String route) async {
-    UI.Image currencyImage = await loadUiImage('assets/icons/currencySmall.png');
+    DatabaseService db = Provider.of<DatabaseService>(context, listen: false);
+    String uid = context.read<AuthenticationService>().getUserId();
+    Provider.of<Player>(context, listen: false).populate(await db.getUserData(uid), await db.getItemData());
 
-    List<UI.Image> numbers = [];
-    for(int i = 0; i < 10; ++i) {
-      numbers.add(await loadUiImage('assets/numbers/' + i.toString() + '.png'));
-    }
+    UI.Image currencyImage = await loadUiImage('assets/icons/currencySmall.png');   
 
     Navigator.pushReplacementNamed(context, route, arguments: {
       'currencyImage': currencyImage,
-      'numbers' : numbers,
-      'player' : Player(),
     });
   }
 

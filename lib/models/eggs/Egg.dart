@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 abstract class Egg {
+  int _id;
   int _durability;//how much clicks an egg must withstand before breaking
   int _clicksToBreak;//clicks before breaking
   int _clicksToBreakConst;
@@ -19,8 +20,9 @@ abstract class Egg {
   List<String> sprites;
 
 
-  Egg(int durability, int clicksToBreak, int minCurrencyGain, int bonusCurrencyGain, double width, double height, List<Item> droppableItems, List<String> sprites)
+  Egg(int id, int durability, int clicksToBreak, int minCurrencyGain, int bonusCurrencyGain, double width, double height, List<Item> droppableItems, List<String> sprites)
   {
+    this._id = id;
     this._durability = durability;
     this._clicksToBreak = clicksToBreak;
     this._minCurrencyGain = minCurrencyGain;

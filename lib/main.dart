@@ -1,5 +1,7 @@
 import 'package:GIB_EG/screens/welcome_screen/welcome_screen.dart';
 import 'package:GIB_EG/utilities/authentication_services.dart';
+import 'package:GIB_EG/utilities/database_services.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +34,10 @@ class Myapp extends StatelessWidget {
 
             Provider<AuthenticationService>(
               create: (_) => AuthenticationService(FirebaseAuth.instance),
+            ),
+
+            Provider<DatabaseService>(
+              create: (_) => DatabaseService(FirebaseFirestore.instance),
             ),
 
             StreamProvider(

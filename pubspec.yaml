@@ -58,7 +58,6 @@ flutter:
   assets:
     - assets/icons/
     - assets/sprites/
-    - assets/numbers/
     - assets/items/
     - assets/boosters/
     - assets/static_data/boosters/
