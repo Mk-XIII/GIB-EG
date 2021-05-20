@@ -19,6 +19,7 @@ class _InventoryState extends State<Inventory> {
   final textController = TextEditingController();
   int _currentIndex = 0;
 
+
   @override
   void dispose() {
     textController.dispose();
@@ -77,6 +78,20 @@ class _InventoryState extends State<Inventory> {
                             child: Row(
                               children: [
                                 Expanded(
+                                  flex: 1,
+                                  child: IconButton(
+                                    padding: EdgeInsets.fromLTRB(
+                                        0.0, 0.0, 8.0, 16.0),
+                                    //highlightColor: Colors.transparent,
+                                    //splashColor: Colors.transparent,
+                                    icon: Icon(Icons.arrow_drop_down_sharp),
+                                    iconSize: 30.0,
+                                    onPressed: () {
+                                      setState(() {});
+                                    },
+                                  ),
+                                ),
+                                Expanded(
                                   flex: 6,
                                   child: TextField(
                                     controller: textController,
@@ -125,10 +140,9 @@ class _InventoryState extends State<Inventory> {
                 padding: const EdgeInsets.all(8.0),
                 child: Consumer<Player>(
                   builder: (context, player, child) => GridView.count(
-                    crossAxisCount: 3,
+                    crossAxisCount: 2,
                     mainAxisSpacing: 8,
                     crossAxisSpacing: 8,
-                    // Generate 100 widgets that display their index in the List.
                     children: generateObjects(player.getItems()),
                   ),
                 ),
@@ -144,12 +158,17 @@ class _InventoryState extends State<Inventory> {
     );
   }
 
-  //change later into generator function
+  //function that populates grid with items that matches search phrase
   List<GridItem> generateObjects(Map<Item, int> items) {
     List<GridItem> widgets = [];
+    RegExp searchPhrase = new RegExp(textController.text.replaceAll(RegExp(r"\\"), ""),
+      caseSensitive: false,
+      multiLine: false, );
 
-    items.forEach((k, v) {
-      widgets.add(GridItem(item: k, quanity: v));
+    items.forEach((key, value) {
+      if(searchPhrase.hasMatch(key.name)) {
+        widgets.add(GridItem(item: key, quanity: value));
+      }
     });
     return widgets;
   }

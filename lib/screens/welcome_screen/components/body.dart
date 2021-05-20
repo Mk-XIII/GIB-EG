@@ -26,14 +26,7 @@ class Body extends StatelessWidget {
               color: Color.fromRGBO(50, 21, 55, 100),
               textColor: Color.fromRGBO(255, 231, 231, 100),
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return LoginScreen();
-                    },
-                  ),
-                );
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
               },
             ),
             RoundedButton(
@@ -41,14 +34,7 @@ class Body extends StatelessWidget {
               color: Color.fromRGBO(50, 21, 55, 100),
               textColor: Color.fromRGBO(255, 231, 231, 100),
               press: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return SignUpScreen();
-                    },
-                  ),
-                );
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignUpScreen()));
               },
             ),
           ],
