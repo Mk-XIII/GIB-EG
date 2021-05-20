@@ -24,8 +24,10 @@ class InteractiveEggButton extends StatefulWidget {
 class _InteractiveEggButtonState extends State<InteractiveEggButton> {
   List<Particles> particles = [];
   
+  
   @override
   Widget build(BuildContext context) {
+    var player = Provider.of<Player>(context, listen: false);
     return Stack(
       alignment: AlignmentDirectional.center,
       children: [
@@ -37,14 +39,14 @@ class _InteractiveEggButtonState extends State<InteractiveEggButton> {
             builder: (context, ImgDetails img) {
               return GestureDetector(
                 onTapDown: (TapDownDetails details) {
-
+                  player.setStats();
                   Offset particlesOffset = _getOffset(details);
 
                   if (_onEgg(img, (context.size.height - widget.egg.height) / 2, (context.size.width - widget.egg.width) / 2, particlesOffset.dx.toInt(), particlesOffset.dy.toInt())) {
                     if(!widget.egg.sustainedClick()) {                   
-                      var player = Provider.of<Player>(context, listen: false);
+                    
                       var color = player.addItem(widget.egg.dropItem());//change to item later on
-                      player.setStats();
+                      
 
                       widget.onPressed();
 

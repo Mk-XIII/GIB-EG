@@ -115,6 +115,7 @@ class _TappableEggState extends State<TappableEgg> {
                           //listen: false means that we shouldn't rerender the whole widget
                           var player =
                               Provider.of<Player>(context, listen: false);
+                          
                           player.addMoney(_eggs[_currentIndex].dropCurrency());
                         },
                         currencyImage: widget.currencyImage,

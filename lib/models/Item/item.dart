@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class Item {
   int id;
@@ -16,9 +17,24 @@ class Item {
     this.id = id;
     this.name = values[0];
     this.sprite = values[1];
+    this.rarityString = values[2];
+    this.description = values[3];
+    this.value = values[4];
+    this.rarity = rarityStringToColor(rarityString);
   }
+
 
   void displayItem() {
     print("Info: " + quality + " " + name + " - " + description);
+  }
+
+  Color rarityStringToColor(String rarityString){
+    switch(rarityString){
+      case "Legendary": return Colors.black;
+      case "Epic": return Colors.red;
+      case "Rare": return Colors.blue;
+      case "Common": return Colors.green;
+      default: throw new Exception();
+    }
   }
 }

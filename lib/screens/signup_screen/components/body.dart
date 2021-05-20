@@ -33,11 +33,6 @@ class Body extends StatelessWidget {
               onChanged: (value) {},
             ),
             RoundedInputField(
-              controller: usernamecontroller,
-              hintText: "Username",
-              onChanged: (value) {},
-            ),
-            RoundedInputField(
               controller: emailcontroller,
               hintText: "Your Email",
               onChanged: (value) {},
@@ -51,20 +46,12 @@ class Body extends StatelessWidget {
               textColor: Color.fromRGBO(255, 231, 231, 100),
               text: "SIGNUP",
               press: () async {
-<<<<<<< HEAD
-                String result =
-                    await context.read<AuthenticationService>().singUp(
-                          email: emailcontroller.text,
-                          password: passwordcontroller.text,
-                        );
-=======
                 String result = await context.read<AuthenticationService>().singUp(
                   email: emailcontroller.text,
                   password: passwordcontroller.text,
                   username: usernamecontroller.text,
                   db: Provider.of<DatabaseService>(context, listen: false),
                 );
->>>>>>> e74820f90f4f3e942d4bd6cb493025f3820c3681
 
                 if (result != "Signed up") {
                   //implement what to do on insuccessful sign up attempt

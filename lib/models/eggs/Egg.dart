@@ -37,7 +37,6 @@ abstract class Egg {
 
   //returns false when egg breaks
   bool sustainedClick() {
-
     print(_clicksToBreak.toString());
     _clicksToBreak -= 1;
     if(_clicksToBreak == (_clicksToBreakConst / 4).round() * (4 - (currentIndex + 1))){

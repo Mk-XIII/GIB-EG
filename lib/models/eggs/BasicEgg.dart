@@ -5,12 +5,12 @@ import 'Egg.dart';
 
 class BasicEgg extends Egg {
   BasicEgg()
-      : super(0, 1, 60, 50, 59, 250, 341, [
+      : super(0, 1, 10, 50, 59, 250, 341, [
           Item(
               id: 1,
               name: "The Letter 'A'",
               sprite: "assets/items/a_item.PNG",
-              description: "DESC OF ITEM A",
+              description: "A substitute for spaces, according to experts",
               value: 100,
               rarity: Colors.black,
               rarityString: "Legendary"),
@@ -18,7 +18,7 @@ class BasicEgg extends Egg {
               id: 2,
               name: "34D Printer",
               sprite: "assets/items/printer.PNG",
-              description: "DONT GOOGLE THIS ONE",
+              description: "Print me like one of your 15min wives",
               value: 200,
               rarity: Colors.red,
               rarityString: "Epic")
