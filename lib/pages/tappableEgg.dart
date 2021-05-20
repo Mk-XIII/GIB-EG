@@ -100,7 +100,7 @@ class _TappableEggState extends State<TappableEgg> {
                         icon: Icon(Icons.keyboard_arrow_left_rounded),
                         iconSize: 50.0,
                         onPressed: () {
-                          _currentIndex = 0;
+                          _currentIndex = (_currentIndex - 1) % _eggs.length;
                           setState(() {});
                         },
                       ),
@@ -127,7 +127,9 @@ class _TappableEggState extends State<TappableEgg> {
                         icon: Icon(Icons.keyboard_arrow_right_rounded),
                         iconSize: 50.0,
                         onPressed: () {
-                          _currentIndex = 1;
+                          
+                          _currentIndex = (_currentIndex + 1) % _eggs.length;
+                          
                           setState(() {});
                         },
                       ),

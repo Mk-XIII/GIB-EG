@@ -5,11 +5,14 @@ import 'package:GIB_EG/models/Item/item.dart';
 import 'package:GIB_EG/models/PlayerStatistics.dart';
 import 'package:GIB_EG/models/eggs/BasicEgg.dart';
 import 'package:GIB_EG/models/eggs/FancyEgg.dart';
+import 'package:GIB_EG/models/eggs/MatrioskaEgg.dart';
+import 'package:GIB_EG/models/eggs/SocialEgg.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'booster.dart';
 import 'eggs/Egg.dart';
+import 'eggs/GameEgg.dart';
 
 class Player extends ChangeNotifier{
   String username; 
@@ -24,7 +27,7 @@ class Player extends ChangeNotifier{
     _items = Map();
     _boosters = Map();
     //for now this is hardcoded
-    _egs = [BasicEgg(), FancyEgg()];
+    _egs = [BasicEgg(), FancyEgg(), GameEgg(), MatrioskaEgg(), SocialEgg()];
     _stats = PlayerStatistics();
   }
 
@@ -33,7 +36,7 @@ class Player extends ChangeNotifier{
     _items = Map();
     _boosters = Map();
     //for now this is hardcoded
-    _egs = [BasicEgg(), FancyEgg()];
+    _egs = [BasicEgg(), FancyEgg(), GameEgg(), MatrioskaEgg(), SocialEgg()];
     _stats = PlayerStatistics();
     _isBoosterActive = false;
   }

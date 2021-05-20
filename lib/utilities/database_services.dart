@@ -6,6 +6,10 @@ class DatabaseService {
 
   DatabaseService(this._firestore);
 
+  FirebaseFirestore getInstance(){
+    return this._firestore;
+  }
+
   Future uploadUserInfo(userdata, userID) async {
     _firestore.collection("users")
     .doc(userID)
@@ -30,4 +34,7 @@ class DatabaseService {
       }
     );
   }  
+  // Future<QuerySnapshot<Map<String, dynamic>>> getAllUsers() async{
+  //   return await _firestore.collection("users");
+  // }
 }
